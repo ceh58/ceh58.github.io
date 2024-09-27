@@ -1,6 +1,6 @@
 ---
 #title: "Carmen Hoyt"
-image: headshot.jpeg
+image: headshot.jpg
 about: 
   template: trestles
   #image-shape: round
