@@ -3,18 +3,22 @@ project:
   output-dir: docs
 
 website:
-  title: "ceh58.github.io"
+  title: "Carmen Hoyt"
   navbar:
     left:
       - href: index.qmd
         text: Home
       - about.qmd
+      - href: Resources.qmd
+        text: Resources
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: sandstone
+      dark: slate
     css: styles.css
-    toc: true
+    toc: false
+    page-layout: full
 
-editor: visual
 
