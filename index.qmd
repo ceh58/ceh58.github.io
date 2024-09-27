@@ -3,7 +3,7 @@
 image: headshot.jpg
 about: 
   template: trestles
-  #image-shape: round
+  image-shape: round
   image-width: 17em
   links: 
     - text: LinkedIn
