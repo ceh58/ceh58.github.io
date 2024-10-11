@@ -7,12 +7,15 @@ about:
   image-width: 17em
   links: 
     - text: LinkedIn
+      icon: linkedin
       href: https://www.linkedin.com/in/carmen-hoyt-952272153/
       target: _blank
     - text: GitHub
+      icon: github
       href: https://github.com/ceh58
       target: _blank
     - text: Email
+      icon: envelope
       href: mailto:choyt@ucsb.edu
 ---
 
