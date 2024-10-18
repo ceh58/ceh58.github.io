@@ -1,0 +1,21 @@
+---
+title: "My First Post"
+description: "A short catchy description of the blog post."
+author: 
+  - name: Carmen Hoyt
+    url: https://ceh58.github.io/
+    affiliation: MEDS
+    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science
+date: 2024-10-18
+categories: [Quarto, MEDS, something-cool]
+toc: true
+page-layout: full
+---
+
+## This is my first section
+
+I'm going to insert a footnote here[^1]
+
+[^1]: Here is a new footnote.
+
+## This is my second
