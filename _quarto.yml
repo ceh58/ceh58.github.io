@@ -1,0 +1,36 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Carmen Hoyt"
+  #favicon: images/my-favicon.png
+  navbar:
+    #title: false
+    #logo: images/my-logo.png
+    #logo-alt: "my alt text"
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+      - href: Resources.qmd
+        text: Resources
+      - posts.qmd
+      #- text: CV
+        #href: CV/my-cv.pdf
+  page-footer:
+    background: light #or dark
+    left: Copyright 2024, Carmen Hoyt
+    right: This website is built with {{< fa brands github title="GitHub icon" >}}.
+
+format: 
+  html:
+    theme: styles.scss
+    mainfont: Arvo
+      #light: sandstone
+      #dark: slate
+    css: styles.css
+    toc: false
+    page-layout: full
+
+

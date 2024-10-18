@@ -1,0 +1,19 @@
+---
+title: "About"
+---
+
+## What I do for work
+
+<p class= "title" > some text here </p>
+
+## What I do for fun
+
+<p class ="center-teal"> *give the people what they want, which is fun stuff* <p>
+
+[Underwater photography: https://www.instagram.com/carmen.underwater/]{.blue-text}
+
+::: {.center-teal}
+here is a line
+
+here is another line
+:::
