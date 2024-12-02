@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
   <li><a href="#highlights" id="toc-highlights" class="nav-link" data-scroll-target="#highlights">Highlights</a></li>
-  <li><a href="#repository" id="toc-repository" class="nav-link" data-scroll-target="#repository">Repository</a></li>
+  <li><a href="#thomas-fire-github-repository" id="toc-thomas-fire-github-repository" class="nav-link" data-scroll-target="#thomas-fire-github-repository">Thomas Fire GitHub Repository</a></li>
   <li><a href="#dataset-descriptions" id="toc-dataset-descriptions" class="nav-link" data-scroll-target="#dataset-descriptions">Dataset Descriptions</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -195,6 +195,7 @@ ul.task-list li input[type="checkbox"] {
 <h1>About</h1>
 <p>The Thomas Fire burned over 280,000 acres (about 440 square miles) across Ventura and Santa Barbara counties in December 2017, securing it as the largest wildfire in modern California history at the time. The main catalyst for the fire’s rapid spread were unseasonably strong Santa Ana winds that brought warm air and low humidity. In the end, 1,063 structures were lost, over 104,607 residents were forced to leave their homes, and damages totaled over $2.2 billion. Lasting environmental effects of the fire included poor air quality (Assignment 2?!) and mudflows during the successive rainy season as a result of the burned vegetation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p>This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to red, near infrared to green, and red to blue), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p><em>This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</em></p>
 </section>
 <section id="highlights" class="level1">
 <h1>Highlights</h1>
@@ -204,9 +205,8 @@ ul.task-list li input[type="checkbox"] {
 <li><p>It is essential to match Coordinate Reference Systems (CRSs) of shapefiles and images to obtain the final plot.</p></li>
 </ul>
 </section>
-<section id="repository" class="level1">
-<h1>Repository</h1>
-<p><a href="https://github.com/ceh58/eds220-hwk4-repeat">Thomas Fire GitHub Repository</a></p>
+<section id="thomas-fire-github-repository" class="level1">
+<h1><a href="https://github.com/ceh58/eds220-hwk4-repeat">Thomas Fire GitHub Repository</a></h1>
 <pre><code>├── data
 │  ├── thomas_fire.cpg
 │  ├── thoams_fire.dbf
@@ -220,16 +220,10 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="dataset-descriptions" class="level1">
 <h1>Dataset Descriptions</h1>
-<section id="landsat-data" class="level4">
-<h4 class="anchored" data-anchor-id="landsat-data">Landsat Data:</h4>
+<p>Landsat Data:</p>
 <p>A cleaned, simplified collection of bands (red, green, blue, nir, swir) from Landsat Collection 2 Level-2 (collected by Landsat 8 satellite).</p>
-<p>Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, &amp; Tom Augspurger. (2022). microsoft/PlanetaryComputer: October 2022 (2022.10.28). Zenodo. <a href="https://doi.org/10.5281/zenodo.7261897">https://doi.org/10.5281/zenodo.7261897</a> Accessed: November 19, 2024</p>
-</section>
-<section id="fire-perimeters-data" class="level4">
-<h4 class="anchored" data-anchor-id="fire-perimeters-data">Fire Perimeters Data:</h4>
-<p>Open-source data containing information from the spatial distrubtion of past fires in California published by the State of California and downloaded as a shapefile. Accessed: November 19, 2024</p>
-<p>State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436</a> Accessed: November 19, 2024</p>
-</section>
+<p>Fire Perimeters Data:</p>
+<p>Open-source data containing information from the spatial distrubtion of past fires in California published by the State of California and downloaded as a shapefile.</p>
 </section>
 <section id="analysis" class="level1">
 <h1>Analysis</h1>
@@ -240,7 +234,8 @@ ul.task-list li input[type="checkbox"] {
 import pandas as pd
 import geopandas as gpd
 import xarray as xr</code></pre>
-<p>Then, import the dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile).</p>
+<p>Then, import the fire perimeters dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile due to its versatility and familiarity).</p>
+<p><em>Note: I saved the fire perimeters dataset in my data/ folder in a separate no_push/ folder that was added to my .gitignore due to the size of the file.</em></p>
 <pre><code># Create filepath
 fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
 
@@ -267,20 +262,39 @@ import geopandas as gpd
 import xarray as xr
 import rioxarray as rioxr
 import numpy as np</code></pre>
-<p>Then, import the landsat data which has been pre-processed and saved on the server.</p>
+<p>Then, import the landsat data which has been pre-processed and saved on the server at the given filepath.</p>
 <pre><code># Import data
 fp = os.path.join("/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc")
-landsat = rioxr.open_rasterio(fp)</code></pre>
-<p>The xarray has a band of dimension one. This dimension is not necessary, so we will use the <code>squeeze()</code> and <code>drop_vars()</code> functions to remove it.</p>
+landsat = rioxr.open_rasterio(fp)
+landsat</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="landsat_xarray.png" class="img-fluid figure-img" width="829"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The xarray has a dimension <code>band</code> of size one. This dimension is not necessary, so we will use the <code>squeeze()</code> and <code>drop_vars()</code> functions to remove it.</p>
 <pre><code># Drop the 'band' dimension
 landsat = landsat.squeeze().drop_vars('band')
 
 # Confirm 'band' was dropped
 print(landsat.dims, landsat.coords)</code></pre>
-<p>The next step is to plot a true color image.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="landsat_squeeze.png" class="img-fluid figure-img" width="714"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The next step is to plot a true color image. To do this, we must select the ‘red’, ‘green’, and ‘blue’ variables in that order to assign to the ‘red’, ‘green’, and ‘blue’ bands.</p>
 <pre><code># Select 'red', 'green', and 'blue' variables and plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow()</code></pre>
-<p>Since there are outlier values, the initial plot is black and white and gives us warning message.</p>
+<p>Since there are outlier values in these variables, the initial plot is black and white and gives us warning message:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -290,10 +304,10 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow()</code></pre>
 </div>
 </div>
 </div>
-<p>In order to de-weight the outliers and properly scale each band, we will use the <code>robust</code> parameter in <code>.imshow()</code>.</p>
+<p>In order to de-weight the outliers and properly scale each band, we will set the <code>robust</code> parameter to True in <code>.imshow()</code>.</p>
 <pre><code># Adjust the scale for a true color plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)</code></pre>
-<p>This produces our true color image.</p>
+<p>This produces our true color image:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -303,9 +317,10 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)</code></
 </div>
 </div>
 </div>
-<p>To create our false color image, we must assign swir22 to the red band, nir08 to the green band, and red to the blue band.</p>
+<p>To create our false color image, we must assign the short wave infrared variable (‘swir22’) to the ‘red’ band, the near infrared variable (‘nir08’) to the ‘green’ band, and ‘red’ variable to the ‘blue’ band.</p>
 <pre><code># Create a false color image
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)</code></pre>
+<p>This produces our false color image:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -315,7 +330,7 @@ landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)</code>
 </div>
 </div>
 </div>
-<p>Finally, we can create our final map. We must import our saved shapefile and make sure the CRSs match.</p>
+<p>Finally, we can create our burn scar map. We must import our saved Thomas Fire perimeter shapefile and make sure the CRSs match before we can plot.</p>
 <pre><code># Import Thomas Fire shapefile
 thomas_fire = gpd.read_file(os.path.join("data", "thomas_fire.shp"))
 
@@ -325,9 +340,18 @@ if thomas_fire.crs == landsat.rio.crs:
 else:
     landsat = landsat.rio.reproject(thomas_fire.crs)
     assert landsat.rio.crs == thomas_fire.crs
-    print("We matched the CRSs!")
-    
-# Map the false color image with the fire perimeter
+    print("We matched the CRSs!")</code></pre>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="message.png" class="img-fluid figure-img" width="188"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>To map the data,</p>
+<pre><code># Map the false color image with the fire perimeter
 landsat_aspect_ratio = landsat.rio.width/landsat.rio.height
 
 fig, ax = plt.subplots(figsize = (6, 6*landsat_aspect_ratio))
@@ -362,10 +386,15 @@ plt.show()</code></pre>
 </div>
 </div>
 </div>
+<p>This figure shows the burn scar from the Thomas Fire in 2017. By assigning infrared bands to visible colors (short wave infrared to red, near infrared to green, and red to blue), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green.</p>
 </section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
+<p>Landsat data:</p>
+<p>Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, &amp; Tom Augspurger. (2022). microsoft/PlanetaryComputer: October 2022 (2022.10.28). Zenodo. <a href="https://doi.org/10.5281/zenodo.7261897">https://doi.org/10.5281/zenodo.7261897</a> Accessed: November 19, 2024</p>
+<p>Fire perimeter data:</p>
+<p>State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436</a> Accessed: November 19, 2024</p>
 
 
 </section>
@@ -376,6 +405,7 @@ plt.show()</code></pre>
 <ol>
 <li id="fn1"><p>Read more about the Thomas fire <a href="https://en.wikipedia.org/wiki/Thomas_Fire">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Read more about false color imagery <a href="https://earthobservatory.nasa.gov/features/FalseColor">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See the assignment guidelines <a href="https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

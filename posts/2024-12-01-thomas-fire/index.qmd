@@ -31,6 +31,10 @@ This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight t
 
 [^2]: Read more about false color imagery [here](https://earthobservatory.nasa.gov/features/FalseColor).
 
+*This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4 [^3].*
+
+[^3]: See the assignment guidelines [here](https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html).
+
 # Highlights
 
 - This task explores assigning infrared bands to visible colors to obtain false color imagery.
@@ -39,9 +43,7 @@ This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight t
 
 - It is essential to match Coordinate Reference Systems (CRSs) of shapefiles and images to obtain the final plot.
 
-# Repository
-
-[Thomas Fire GitHub Repository](https://github.com/ceh58/eds220-hwk4-repeat)
+# [Thomas Fire GitHub Repository](https://github.com/ceh58/eds220-hwk4-repeat)
 
 ```
 ├── data
@@ -58,18 +60,13 @@ This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight t
 
 # Dataset Descriptions
 
-#### Landsat Data:
+Landsat Data:
 
 A cleaned, simplified collection of bands (red, green, blue, nir, swir) from Landsat Collection 2 Level-2 (collected by Landsat 8 satellite).
 
-Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, & Tom Augspurger. (2022). microsoft/PlanetaryComputer: October 2022 (2022.10.28). Zenodo. [https://doi.org/10.5281/zenodo.7261897](https://doi.org/10.5281/zenodo.7261897) Accessed: November 19, 2024
-
-#### Fire Perimeters Data:
+Fire Perimeters Data:
 
 Open-source data containing information from the spatial distrubtion of past fires in California published by the State of California and downloaded as a shapefile. 
-Accessed: November 19, 2024
-
-State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). [https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436) Accessed: November 19, 2024
 
 # Analysis
 
@@ -83,7 +80,10 @@ import geopandas as gpd
 import xarray as xr
 ```
 
-Then, import the dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile).
+Then, import the fire perimeters dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile due to its versatility and familiarity).
+
+*Note: I saved the fire perimeters dataset in my data/ folder in a separate no_push/ folder that was added to my .gitignore due to the size of the file.*
+
 ```
 # Create filepath
 fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
@@ -105,6 +105,7 @@ thomas_fire.to_file(os.path.join("data", "thomas_fire.shp"))
 #### From `hwk4-task2-false-color-HOYT.ipynb`
 
 First, import all necessary packages.
+
 ```
 import os
 import pandas as pd
@@ -115,14 +116,21 @@ import rioxarray as rioxr
 import numpy as np
 ```
 
-Then, import the landsat data which has been pre-processed and saved on the server.
+Then, import the landsat data which has been pre-processed and saved on the server at the given filepath.
+
 ```
 # Import data
 fp = os.path.join("/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc")
 landsat = rioxr.open_rasterio(fp)
+landsat
 ```
 
-The xarray has a band of dimension one. This dimension is not necessary, so we will use the `squeeze()` and `drop_vars()` functions to remove it.
+```{r}
+#| echo: false
+knitr::include_graphics("landsat_xarray.png")
+```
+
+The xarray has a dimension `band` of size one. This dimension is not necessary, so we will use the `squeeze()` and `drop_vars()` functions to remove it.
 
 ```
 # Drop the 'band' dimension
@@ -132,47 +140,54 @@ landsat = landsat.squeeze().drop_vars('band')
 print(landsat.dims, landsat.coords)
 ```
 
-The next step is to plot a true color image.
+```{r}
+#| echo: false
+knitr::include_graphics("landsat_squeeze.png")
+```
+
+The next step is to plot a true color image. To do this, we must select the 'red', 'green', and 'blue' variables in that order to assign to the 'red', 'green', and 'blue' bands.
 
 ```
 # Select 'red', 'green', and 'blue' variables and plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow()
 ```
 
-Since there are outlier values, the initial plot is black and white and gives us warning message.
+Since there are outlier values in these variables, the initial plot is black and white and gives us warning message:
 
 ```{r}
 #| echo: false
 knitr::include_graphics("true_color_1.png")
 ```
 
-In order to de-weight the outliers and properly scale each band, we will use the `robust` parameter in `.imshow()`.
+In order to de-weight the outliers and properly scale each band, we will set the `robust` parameter to True in `.imshow()`.
 
 ```
 # Adjust the scale for a true color plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)
 ```
 
-This produces our true color image.
+This produces our true color image:
 
 ```{r}
 #| echo: false
 knitr::include_graphics("true_color_2.png")
 ```
 
-To create our false color image, we must assign swir22 to the red band, nir08 to the green band, and red to the blue band. 
+To create our false color image, we must assign the short wave infrared variable ('swir22') to the 'red' band, the near infrared variable ('nir08') to the 'green' band, and 'red' variable to the 'blue' band. 
 
 ```
 # Create a false color image
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)
 ```
 
+This produces our false color image:
+
 ```{r}
 #| echo: false
 knitr::include_graphics("false_color.png")
 ```
 
-Finally, we can create our final map. We must import our saved shapefile and make sure the CRSs match.
+Finally, we can create our burn scar map. We must import our saved Thomas Fire perimeter shapefile and make sure the CRSs match before we can plot.
 
 ```
 # Import Thomas Fire shapefile
@@ -185,7 +200,16 @@ else:
     landsat = landsat.rio.reproject(thomas_fire.crs)
     assert landsat.rio.crs == thomas_fire.crs
     print("We matched the CRSs!")
-    
+```
+
+```{r}
+#| echo: false
+knitr::include_graphics("message.png")
+```
+
+To map the data,
+
+```
 # Map the false color image with the fire perimeter
 landsat_aspect_ratio = landsat.rio.width/landsat.rio.height
 
@@ -219,7 +243,16 @@ plt.show()
 knitr::include_graphics("final_plot.png")
 ```
 
+This figure shows the burn scar from the Thomas Fire in 2017. By assigning infrared bands to visible colors (short wave infrared to red, near infrared to green, and red to blue), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green.
 
 # References
+
+Landsat data:
+
+Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, & Tom Augspurger. (2022). microsoft/PlanetaryComputer: October 2022 (2022.10.28). Zenodo. [https://doi.org/10.5281/zenodo.7261897](https://doi.org/10.5281/zenodo.7261897) Accessed: November 19, 2024
+
+Fire perimeter data:
+
+State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). [https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436) Accessed: November 19, 2024
 
 
