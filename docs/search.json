@@ -53,7 +53,14 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "My First Post\n\n\n\nQuarto\n\n\nMEDS\n\n\nsomething-cool\n\n\n\nA short catchy description of the blog post.\n\n\n\nCarmen Hoyt\n\n\nOct 18, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python\n\n\n\nPython\n\n\nEDS220\n\n\nLandsat\n\n\n\n\n\n\n\nCarmen Hoyt\n\n\nDec 1, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-12-01-thomas-fire/index.html",
+    "href": "posts/2024-12-01-thomas-fire/index.html",
+    "title": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{hoyt2024,\n  author = {Hoyt, Carmen},\n  title = {Using {False} {Color} {Imagery} to {Visualize} the {Impact}\n    of the {Thomas} {Fire} in {Python}},\n  date = {2024-12-01},\n  url = {https://ceh58.github.io/posts/2024-12-01-thomas-fire/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nHoyt, Carmen. 2024. “Using False Color Imagery to Visualize the\nImpact of the Thomas Fire in Python.” December 1, 2024. https://ceh58.github.io/posts/2024-12-01-thomas-fire/."
   },
   {
     "objectID": "posts/2024-10-18-my-first-post/index.html",
@@ -82,5 +89,12 @@
     "title": "My First Post",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nHere is a new footnote.↩︎\nhere is my second footnote↩︎\nCsik and Csik (2024)↩︎\nGaynor et al. (2022)↩︎"
+  },
+  {
+    "objectID": "posts/2024-12-01-thomas-fire/index.html#footnotes",
+    "href": "posts/2024-12-01-thomas-fire/index.html#footnotes",
+    "title": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRead more about the Thomas fire here.↩︎\nRead more about false color imagery here.↩︎"
   }
 ]

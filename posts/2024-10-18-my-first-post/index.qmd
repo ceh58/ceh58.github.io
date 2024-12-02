@@ -15,7 +15,7 @@ bibliography: references.bib
 image: whales.jpg
 citation:
   url: https://ceh58.github.io/posts/2024-10-18-my-first-post/
-#draft: true
+draft: true
 #draft-mode: visible
 ---
 
