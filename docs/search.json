@@ -53,14 +53,7 @@
     "href": "posts.html",
     "title": "Blog",
     "section": "",
-    "text": "My First Post\n\n\n\n\n\n\nQuarto\n\n\nMEDS\n\n\nsomething-cool\n\n\n\nA short catchy description of the blog post.\n\n\n\n\n\nOct 18, 2024\n\n\nCarmen Hoyt\n\n\n\n\n\n\nNo matching items"
-  },
-  {
-    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
-    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
-    "title": "My First Post",
-    "section": "This is my second",
-    "text": "This is my second"
+    "text": "My First Post\n\n\n\nQuarto\n\n\nMEDS\n\n\nsomething-cool\n\n\n\nA short catchy description of the blog post.\n\n\n\nCarmen Hoyt\n\n\nOct 18, 2024\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/2024-10-18-my-first-post/index.html",
@@ -77,10 +70,17 @@
     "text": "I’m going to insert a footnote here1"
   },
   {
+    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
+    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
+    "title": "My First Post",
+    "section": "This is my second",
+    "text": "This is my second\nHere’s my next paragraph2\nI’m citing Sam3\nHere is more random text. I’m going to cite a journal article now4."
+  },
+  {
     "objectID": "posts/2024-10-18-my-first-post/index.html#footnotes",
     "href": "posts/2024-10-18-my-first-post/index.html#footnotes",
     "title": "My First Post",
     "section": "Footnotes",
-    "text": "Footnotes\n\n\nHere is a new footnote.↩︎"
+    "text": "Footnotes\n\n\nHere is a new footnote.↩︎\nhere is my second footnote↩︎\nCsik and Csik (2024)↩︎\nGaynor et al. (2022)↩︎"
   }
 ]

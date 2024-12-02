@@ -2,7 +2,7 @@
 title: "Blog"
 listing:
   contents: posts
-  type: default
+  type: grid
   sort: "date desc"
   categories: true
 ---
