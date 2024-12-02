@@ -73,6 +73,48 @@ State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). [
 
 # Analysis
 
+#### From `hwk4-task2-fire-perimeter-HOYT.ipynb`
+
+First, import all necessary packages.
+```
+import os
+import pandas as pd
+import geopandas as gpd
+import xarray as xr
+```
+
+Then, import the dataset and filter for the 2017 Thomas Fire.
+```
+# Create filepath
+fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
+
+# Read in data
+fire_perimeter = gpd.read_file(fp)
+
+# Lower column names
+fire_perimeter.rename(columns=str.lower, inplace=True)
+
+# Select Thomas Fire boundary
+thomas_fire = fire_perimeter.loc[(fire_perimeter['fire_name'] == "THOMAS") & 
+                                 (fire_perimeter['year_']== 2017)]
+                                 
+# Save Thomas Fire boundary
+thomas_fire.to_file(os.path.join("data", "thomas_fire.shp"))
+```
+
+#### From `hwk4-task2-false-color-HOYT.ipynb`
+
+First, import all necessary packages.
+```
+import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import xarray as xr
+import rioxarray as rioxr
+import numpy as np
+```
+
 
 
 # References

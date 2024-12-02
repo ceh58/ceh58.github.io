@@ -233,6 +233,41 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="analysis" class="level1">
 <h1>Analysis</h1>
+<section id="from-hwk4-task2-fire-perimeter-hoyt.ipynb" class="level4">
+<h4 class="anchored" data-anchor-id="from-hwk4-task2-fire-perimeter-hoyt.ipynb">From <code>hwk4-task2-fire-perimeter-HOYT.ipynb</code></h4>
+<p>First, import all necessary packages.</p>
+<pre><code>import os
+import pandas as pd
+import geopandas as gpd
+import xarray as xr</code></pre>
+<p>Then, import the dataset and filter for the 2017 Thomas Fire.</p>
+<pre><code># Create filepath
+fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
+
+# Read in data
+fire_perimeter = gpd.read_file(fp)
+
+# Lower column names
+fire_perimeter.rename(columns=str.lower, inplace=True)
+
+# Select Thomas Fire boundary
+thomas_fire = fire_perimeter.loc[(fire_perimeter['fire_name'] == "THOMAS") &amp; 
+                                 (fire_perimeter['year_']== 2017)]
+                                 
+# Save Thomas Fire boundary
+thomas_fire.to_file(os.path.join("data", "thomas_fire.shp"))</code></pre>
+</section>
+<section id="from-hwk4-task2-false-color-hoyt.ipynb" class="level4">
+<h4 class="anchored" data-anchor-id="from-hwk4-task2-false-color-hoyt.ipynb">From <code>hwk4-task2-false-color-HOYT.ipynb</code></h4>
+<p>First, import all necessary packages.</p>
+<pre><code>import os
+import pandas as pd
+import matplotlib.pyplot as plt
+import geopandas as gpd
+import xarray as xr
+import rioxarray as rioxr
+import numpy as np</code></pre>
+</section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
