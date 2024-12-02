@@ -83,7 +83,7 @@ import geopandas as gpd
 import xarray as xr
 ```
 
-Then, import the dataset and filter for the 2017 Thomas Fire.
+Then, import the dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile).
 ```
 # Create filepath
 fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
@@ -115,6 +115,109 @@ import rioxarray as rioxr
 import numpy as np
 ```
 
+Then, import the landsat data which has been pre-processed and saved on the server.
+```
+# Import data
+fp = os.path.join("/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc")
+landsat = rioxr.open_rasterio(fp)
+```
+
+The xarray has a band of dimension one. This dimension is not necessary, so we will use the `squeeze()` and `drop_vars()` functions to remove it.
+
+```
+# Drop the 'band' dimension
+landsat = landsat.squeeze().drop_vars('band')
+
+# Confirm 'band' was dropped
+print(landsat.dims, landsat.coords)
+```
+
+The next step is to plot a true color image.
+
+```
+# Select 'red', 'green', and 'blue' variables and plot
+landsat[['red', 'green', 'blue']].to_array().plot.imshow()
+```
+
+Since there are outlier values, the initial plot is black and white and gives us warning message.
+
+```{r}
+#| echo: false
+knitr::include_graphics("true_color_1.png")
+```
+
+In order to de-weight the outliers and properly scale each band, we will use the `robust` parameter in `.imshow()`.
+
+```
+# Adjust the scale for a true color plot
+landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)
+```
+
+This produces our true color image.
+
+```{r}
+#| echo: false
+knitr::include_graphics("true_color_2.png")
+```
+
+To create our false color image, we must assign swir22 to the red band, nir08 to the green band, and red to the blue band. 
+
+```
+# Create a false color image
+landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)
+```
+
+```{r}
+#| echo: false
+knitr::include_graphics("false_color.png")
+```
+
+Finally, we can create our final map. We must import our saved shapefile and make sure the CRSs match.
+
+```
+# Import Thomas Fire shapefile
+thomas_fire = gpd.read_file(os.path.join("data", "thomas_fire.shp"))
+
+# Make sure CRSs match
+if thomas_fire.crs == landsat.rio.crs:
+    print("CRSs match!")
+else:
+    landsat = landsat.rio.reproject(thomas_fire.crs)
+    assert landsat.rio.crs == thomas_fire.crs
+    print("We matched the CRSs!")
+    
+# Map the false color image with the fire perimeter
+landsat_aspect_ratio = landsat.rio.width/landsat.rio.height
+
+fig, ax = plt.subplots(figsize = (6, 6*landsat_aspect_ratio))
+
+ax.axis("off")
+
+landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(ax = ax,
+                                                        robust = True)
+
+thomas_fire.boundary.plot(ax = ax,
+                         color = "black")
+
+ax.legend(labels = ["Fire Boundary"])
+
+fig.text(0.5, 0.1,
+        'Data Source: CAL FIRE via Data.gov &  Microsof Planetary Computer data catalogue',
+         ha='center', va='center', fontsize=8, color='black', fontstyle='italic')
+
+fig.text(0.395, 0.08, 
+         'Date Accessed: 11/19/24',
+         ha='right', va='center', fontsize=8, color='black', fontstyle='italic')
+
+ax.set_title("Thomas Fire Scar (2017)", fontsize=14, fontweight='bold')
+
+plt.show()
+```
+
+```{r}
+#| echo: false
+knitr::include_graphics("final_plot.png")
+```
 
 
 # References
