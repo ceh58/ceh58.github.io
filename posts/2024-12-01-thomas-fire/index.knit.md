@@ -16,10 +16,13 @@ image: thomas-fire.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
 ---
 
-```{r}
-#| echo: false
-knitr::include_graphics("thomas-fire.jpg")
-```
+::: {.cell}
+::: {.cell-output-display}
+![](thomas-fire.jpg)
+:::
+:::
+
+
 
 # About
 
@@ -133,10 +136,15 @@ landsat = rioxr.open_rasterio(fp)
 landsat
 ```
 
-```{r}
-#| echo: false
-knitr::include_graphics("landsat_xarray.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](landsat_xarray.png){width=829}
+:::
+:::
+
+
 
 Notice that the raster has a dimension, `band`, of size one. This dimension is not necessary, so we will use the `squeeze()` and `drop_vars()` functions to remove it.
 
@@ -150,10 +158,15 @@ print(landsat.dims, landsat.coords)
 
 Confirm that `band` no longer appears on the list of dimensions (`landsat.dims`).
 
-```{r}
-#| echo: false
-knitr::include_graphics("drop_band.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](drop_band.png){width=685}
+:::
+:::
+
+
 
 Now we can plot a true color image. To do this, we must select the 'red', 'green', and 'blue' bands, in that order, and assign them to the 'red', 'green', and 'blue' colors using `.imshow()`.
 
@@ -164,10 +177,15 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow()
 
 Since there are outliers in these data, the initial plot is black and white and gives us the following warning message:
 
-```{r}
-#| echo: false
-knitr::include_graphics("true_color_1.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](true_color_1.png){width=749}
+:::
+:::
+
+
 
 In order to de-weight the outliers and properly scale each band, we will set the `robust` parameter in `.imshow()` to `True`.
 
@@ -178,10 +196,15 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)
 
 This produces our true color image:
 
-```{r}
-#| echo: false
-knitr::include_graphics("true_color_2.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](true_color_2.png){width=708}
+:::
+:::
+
+
 
 To create our false color image, we must assign the short wave infrared band ('swir22') to the 'red' color, the near infrared band ('nir08') to the 'green' color, and 'red' band to the 'blue' color using the same function.
 
@@ -192,10 +215,15 @@ landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)
 
 The result is our false color image:
 
-```{r}
-#| echo: false
-knitr::include_graphics("false_color.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](false_color.png){width=727}
+:::
+:::
+
+
 
 Finally, we can create our figure.
 
@@ -214,10 +242,15 @@ else:
     print("We matched the CRSs!")
 ```
 
-```{r}
-#| echo: false
-knitr::include_graphics("message.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](message.png){width=188}
+:::
+:::
+
+
 
 To plot the image, we must create an aspect ratio to correctly display the size. The aspect ratio is the width/height. 
 
@@ -263,10 +296,15 @@ plt.show()
 
 Our final figure shows the burn scar of the Thomas Fire, displayed in red and outlined by the fire boundary. 
 
-```{r}
-#| echo: false
-knitr::include_graphics("final_plot.png")
-```
+
+
+::: {.cell}
+::: {.cell-output-display}
+![](final_plot.png){width=555}
+:::
+:::
+
+
 
 # References
 
@@ -277,3 +315,4 @@ Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, & Tom Augspurge
 Fire perimeter data:
 
 State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). [https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436) Accessed: November 19, 2024
+
