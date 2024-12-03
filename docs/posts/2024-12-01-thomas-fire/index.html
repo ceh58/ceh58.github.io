@@ -168,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#about" id="toc-about" class="nav-link active" data-scroll-target="#about">About</a></li>
   <li><a href="#highlights" id="toc-highlights" class="nav-link" data-scroll-target="#highlights">Highlights</a></li>
-  <li><a href="#thomas-fire-github-repository" id="toc-thomas-fire-github-repository" class="nav-link" data-scroll-target="#thomas-fire-github-repository">Thomas Fire GitHub Repository</a></li>
+  <li><a href="#repository" id="toc-repository" class="nav-link" data-scroll-target="#repository">Repository</a></li>
   <li><a href="#dataset-descriptions" id="toc-dataset-descriptions" class="nav-link" data-scroll-target="#dataset-descriptions">Dataset Descriptions</a></li>
   <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">Analysis</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
@@ -193,20 +193,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="about" class="level1">
 <h1>About</h1>
-<p>The Thomas Fire burned over 280,000 acres (about 440 square miles) across Ventura and Santa Barbara counties in December 2017, securing it as the largest wildfire in modern California history at the time. The main catalyst for the fire’s rapid spread were unseasonably strong Santa Ana winds that brought warm air and low humidity. In the end, 1,063 structures were lost, over 104,607 residents were forced to leave their homes, and damages totaled over $2.2 billion. Lasting environmental effects of the fire included poor air quality (Assignment 2?!) and mudflows during the successive rainy season as a result of the burned vegetation<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to red, near infrared to green, and red to blue), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p>The Thomas Fire burned over 280,000 acres (about 440 square miles) across Ventura and Santa Barbara counties in December 2017, the largest wildfire in modern California history at the time. The main catalyst for the fire’s rapid spread was unseasonably strong Santa Ana winds that brought warm air and low humidity. In the end, 1,063 structures were lost, over 104,607 residents were forced to leave their homes, and damages totaled over $2.2 billion. Lasting environmental effects of the fire included poor air quality and mudflows during the successive rainy season as a result of the vegetation loss<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<p>This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to ‘red’, near infrared to ‘green’, and red to ‘blue’), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green, in the false color image<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
 <p><em>This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</em></p>
 </section>
 <section id="highlights" class="level1">
 <h1>Highlights</h1>
 <ul>
 <li><p>This task explores assigning infrared bands to visible colors to obtain false color imagery.</p></li>
-<li><p>Necessary steps include cleaning rasters and filtering geo-dataframes for the desired information.</p></li>
-<li><p>It is essential to match Coordinate Reference Systems (CRSs) of shapefiles and images to obtain the final plot.</p></li>
+<li><p>Necessary steps include cleaning rasters with the xarray and rioxarray packages as well as filtering geo-dataframes with geopandas package.</p></li>
+<li><p>It is essential to match the Coordinate Reference Systems (CRSs) of shapefiles and rasters to obtain the final figure.</p></li>
 </ul>
 </section>
-<section id="thomas-fire-github-repository" class="level1">
-<h1><a href="https://github.com/ceh58/eds220-hwk4-repeat">Thomas Fire GitHub Repository</a></h1>
+<section id="repository" class="level1">
+<h1>Repository</h1>
+<p>More detailed information can be found on my <a href="https://github.com/ceh58/eds220-hwk4-repeat">Thomas Fire GitHub Repository</a>.</p>
+<section id="repository-structure" class="level4">
+<h4 class="anchored" data-anchor-id="repository-structure">Repository structure:</h4>
 <pre><code>├── data
 │  ├── thomas_fire.cpg
 │  ├── thoams_fire.dbf
@@ -218,24 +221,26 @@ ul.task-list li input[type="checkbox"] {
 ├── hwk4-task2-false-color-HOYT.ipynb
 └── hwk4-task2-fire-perimeter-HOYT.ipynb</code></pre>
 </section>
+</section>
 <section id="dataset-descriptions" class="level1">
 <h1>Dataset Descriptions</h1>
 <p>Landsat Data:</p>
-<p>A cleaned, simplified collection of bands (red, green, blue, nir, swir) from Landsat Collection 2 Level-2 (collected by Landsat 8 satellite).</p>
+<p>The landsat dataset used in this analysis is a cleaned, simplified collection of bands (red, green, blue, nir, swir) from <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">Landsat Collection 2 Level-2</a> (collected by Landsat 8 satellite) that was prepared specifically for this project.</p>
 <p>Fire Perimeters Data:</p>
-<p>Open-source data containing information from the spatial distrubtion of past fires in California published by the State of California and downloaded as a shapefile.</p>
+<p>The <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">fire perimeters dataset</a> is an open-source dataset that contains information about the spatial distrubtion of past fires in California published by the State of California (and downloaded as a shapefile).</p>
 </section>
 <section id="analysis" class="level1">
 <h1>Analysis</h1>
-<section id="from-hwk4-task2-fire-perimeter-hoyt.ipynb" class="level4">
-<h4 class="anchored" data-anchor-id="from-hwk4-task2-fire-perimeter-hoyt.ipynb">From <code>hwk4-task2-fire-perimeter-HOYT.ipynb</code></h4>
+<section id="part-1" class="level4">
+<h4 class="anchored" data-anchor-id="part-1">Part 1</h4>
+<p>Derived from <code>hwk4-task2-fire-perimeter-HOYT.ipynb</code>.</p>
 <p>First, import all necessary packages.</p>
 <pre><code>import os
 import pandas as pd
 import geopandas as gpd
 import xarray as xr</code></pre>
-<p>Then, import the fire perimeters dataset and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice (I chose to save it as a shapefile due to its versatility and familiarity).</p>
-<p><em>Note: I saved the fire perimeters dataset in my data/ folder in a separate no_push/ folder that was added to my .gitignore due to the size of the file.</em></p>
+<p>Then, import the fire perimeters dataset (shapefile) and filter for the 2017 Thomas Fire. Save the filtered dataset in a format of your choice. I chose to save it as a shapefile due to its versatility and familiarity.</p>
+<p><em>Note: I saved the full fire perimeters dataset in my data/ folder in a separate no_push/ folder that was added to my .gitignore due to the size of the data.</em></p>
 <pre><code># Create filepath
 fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
 
@@ -245,15 +250,16 @@ fire_perimeter = gpd.read_file(fp)
 # Lower column names
 fire_perimeter.rename(columns=str.lower, inplace=True)
 
-# Select Thomas Fire boundary
+# Select Thomas Fire boundary by filtering for name and year
 thomas_fire = fire_perimeter.loc[(fire_perimeter['fire_name'] == "THOMAS") &amp; 
                                  (fire_perimeter['year_']== 2017)]
                                  
-# Save Thomas Fire boundary
+# Save Thomas Fire boundary as a shapefile
 thomas_fire.to_file(os.path.join("data", "thomas_fire.shp"))</code></pre>
 </section>
-<section id="from-hwk4-task2-false-color-hoyt.ipynb" class="level4">
-<h4 class="anchored" data-anchor-id="from-hwk4-task2-false-color-hoyt.ipynb">From <code>hwk4-task2-false-color-HOYT.ipynb</code></h4>
+<section id="part-2" class="level4">
+<h4 class="anchored" data-anchor-id="part-2">Part 2</h4>
+<p>Derived from <code>hwk4-task2-false-color-HOYT.ipynb</code>.</p>
 <p>First, import all necessary packages.</p>
 <pre><code>import os
 import pandas as pd
@@ -262,7 +268,7 @@ import geopandas as gpd
 import xarray as xr
 import rioxarray as rioxr
 import numpy as np</code></pre>
-<p>Then, import the landsat data which has been pre-processed and saved on the server at the given filepath.</p>
+<p>Next, import the landsat data (which has been pre-processed and saved on the server at the given filepath: <code>/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc</code>).</p>
 <pre><code># Import data
 fp = os.path.join("/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc")
 landsat = rioxr.open_rasterio(fp)
@@ -276,25 +282,26 @@ landsat</code></pre>
 </div>
 </div>
 </div>
-<p>The xarray has a dimension <code>band</code> of size one. This dimension is not necessary, so we will use the <code>squeeze()</code> and <code>drop_vars()</code> functions to remove it.</p>
+<p>Notice that the raster has a dimension, <code>band</code>, of size one. This dimension is not necessary, so we will use the <code>squeeze()</code> and <code>drop_vars()</code> functions to remove it.</p>
 <pre><code># Drop the 'band' dimension
 landsat = landsat.squeeze().drop_vars('band')
 
 # Confirm 'band' was dropped
 print(landsat.dims, landsat.coords)</code></pre>
+<p><code>band</code> no longer appears on the list of dimensions (<code>landsat.dims</code>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="landsat_squeeze.png" class="img-fluid figure-img" width="714"></p>
+<p><img src="drop_band.png" class="img-fluid figure-img" width="685"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The next step is to plot a true color image. To do this, we must select the ‘red’, ‘green’, and ‘blue’ variables in that order to assign to the ‘red’, ‘green’, and ‘blue’ bands.</p>
+<p>Now we can plot a true color image. To do this, we must select the ‘red’, ‘green’, and ‘blue’ bands, in that order, and assign them to the ‘red’, ‘green’, and ‘blue’ colors using <code>.imshow()</code>.</p>
 <pre><code># Select 'red', 'green', and 'blue' variables and plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow()</code></pre>
-<p>Since there are outlier values in these variables, the initial plot is black and white and gives us warning message:</p>
+<p>Since there are outliers in these data, the initial plot is black and white and gives us the following warning message:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -304,7 +311,7 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow()</code></pre>
 </div>
 </div>
 </div>
-<p>In order to de-weight the outliers and properly scale each band, we will set the <code>robust</code> parameter to True in <code>.imshow()</code>.</p>
+<p>In order to de-weight the outliers and properly scale each band, we will set the <code>robust</code> parameter in <code>.imshow()</code> to <code>True</code>.</p>
 <pre><code># Adjust the scale for a true color plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)</code></pre>
 <p>This produces our true color image:</p>
@@ -317,10 +324,10 @@ landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)</code></
 </div>
 </div>
 </div>
-<p>To create our false color image, we must assign the short wave infrared variable (‘swir22’) to the ‘red’ band, the near infrared variable (‘nir08’) to the ‘green’ band, and ‘red’ variable to the ‘blue’ band.</p>
+<p>To create our false color image, we must assign the short wave infrared band (‘swir22’) to the ‘red’ color, the near infrared band (‘nir08’) to the ‘green’ color, and ‘red’ band to the ‘blue’ color using the same function.</p>
 <pre><code># Create a false color image
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)</code></pre>
-<p>This produces our false color image:</p>
+<p>The result is our false color image:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -330,7 +337,8 @@ landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)</code>
 </div>
 </div>
 </div>
-<p>Finally, we can create our burn scar map. We must import our saved Thomas Fire perimeter shapefile and make sure the CRSs match before we can plot.</p>
+<p>Finally, we can create our burn scar figure.</p>
+<p>In order to do this, we must import the Thomas Fire perimeter shapefile we previously saved in Part 1, <code>thomas_fire.shp</code>, and check to see that the CRS of the shapefile matches that of the landsat data using <code>.crs</code> (from the geopandas package) for the shapefile and <code>.rio.crs</code> (from the rioxarray package) for the raster.</p>
 <pre><code># Import Thomas Fire shapefile
 thomas_fire = gpd.read_file(os.path.join("data", "thomas_fire.shp"))
 
@@ -350,22 +358,28 @@ else:
 </div>
 </div>
 </div>
-<p>To map the data,</p>
+<p>To plot the image, we must create an aspect ratio to correctly display the size. The aspect ratio is the width/height.</p>
 <pre><code># Map the false color image with the fire perimeter
-landsat_aspect_ratio = landsat.rio.width/landsat.rio.height
-
+landsat_aspect_ratio = landsat.rio.width/landsat.rio.height</code></pre>
+<p>Then, the figure is set up using the aspect ratio, and each figure element is plotted in sequence using the <code>matplotlib</code> package.</p>
+<pre><code># Setup figure
 fig, ax = plt.subplots(figsize = (6, 6*landsat_aspect_ratio))
 
+# Turn the axis off
 ax.axis("off")
 
+# Plot the false color image on the figure
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(ax = ax,
                                                         robust = True)
 
+# Add Thomas Fire shapefile as a boundary on the figure
 thomas_fire.boundary.plot(ax = ax,
                          color = "black")
 
+# Add legend to the figure
 ax.legend(labels = ["Fire Boundary"])
 
+# Add annotation to the figure
 fig.text(0.5, 0.1,
         'Data Source: CAL FIRE via Data.gov &amp;  Microsof Planetary Computer data catalogue',
          ha='center', va='center', fontsize=8, color='black', fontstyle='italic')
@@ -374,9 +388,11 @@ fig.text(0.395, 0.08,
          'Date Accessed: 11/19/24',
          ha='right', va='center', fontsize=8, color='black', fontstyle='italic')
 
+# Add title
 ax.set_title("Thomas Fire Scar (2017)", fontsize=14, fontweight='bold')
 
 plt.show()</code></pre>
+<p>Our final figure shows the burn scar of the Thomas Fire, displayed in red and outlined by the fire boundary.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -386,7 +402,6 @@ plt.show()</code></pre>
 </div>
 </div>
 </div>
-<p>This figure shows the burn scar from the Thomas Fire in 2017. By assigning infrared bands to visible colors (short wave infrared to red, near infrared to green, and red to blue), we can easily distinguish the burn scar from the surrounding vegetation. This is because bare earth reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green.</p>
 </section>
 </section>
 <section id="references" class="level1">
