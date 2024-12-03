@@ -80,7 +80,7 @@ Derived from `hwk4-task2-fire-perimeter-HOYT.ipynb`.
 
 First, import all necessary packages.
 
-```
+```python
 import os
 import pandas as pd
 import geopandas as gpd
@@ -91,7 +91,7 @@ Then, import the fire perimeters dataset (shapefile) and filter for the 2017 Tho
 
 *Note: I saved the full fire perimeters dataset in my data/ folder in a separate no_push/ folder that was added to my .gitignore due to the size of the data.*
 
-```
+```python
 # Create filepath
 fp = os.path.join("data", "no_push", "California_Fire_Perimeters_(all).shp")
 
@@ -114,7 +114,7 @@ Derived from `hwk4-task2-false-color-HOYT.ipynb`.
 
 First, import all necessary packages.
 
-```
+```python
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -126,7 +126,7 @@ import numpy as np
 
 Next, import the landsat data (which has been pre-processed and saved on the server at the given filepath: `/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc`).
 
-```
+```python
 # Import data
 fp = os.path.join("/courses/EDS220/data/hwk4_landsat_data", "landsat8-2018-01-26-sb-simplified.nc")
 landsat = rioxr.open_rasterio(fp)
@@ -140,7 +140,7 @@ knitr::include_graphics("landsat_xarray.png")
 
 Notice that the raster has a dimension, `band`, of size one. This dimension is not necessary, so we will use the `squeeze()` and `drop_vars()` functions to remove it.
 
-```
+```python
 # Drop the 'band' dimension
 landsat = landsat.squeeze().drop_vars('band')
 
@@ -157,7 +157,7 @@ knitr::include_graphics("drop_band.png")
 
 Now we can plot a true color image. To do this, we must select the 'red', 'green', and 'blue' bands, in that order, and assign them to the 'red', 'green', and 'blue' colors using `.imshow()`.
 
-```
+```python
 # Select 'red', 'green', and 'blue' variables and plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow()
 ```
@@ -171,7 +171,7 @@ knitr::include_graphics("true_color_1.png")
 
 In order to de-weight the outliers and properly scale each band, we will set the `robust` parameter in `.imshow()` to `True`.
 
-```
+```python
 # Adjust the scale for a true color plot
 landsat[['red', 'green', 'blue']].to_array().plot.imshow(robust = True)
 ```
@@ -185,7 +185,7 @@ knitr::include_graphics("true_color_2.png")
 
 To create our false color image, we must assign the short wave infrared band ('swir22') to the 'red' color, the near infrared band ('nir08') to the 'green' color, and 'red' band to the 'blue' color using the same function.
 
-```
+```python
 # Create a false color image
 landsat[['swir22', 'nir08', 'red']].to_array().plot.imshow(robust = True)
 ```
@@ -201,7 +201,7 @@ Finally, we can create our burn scar figure.
 
 In order to do this, we must import the Thomas Fire perimeter shapefile we previously saved in Part 1, `thomas_fire.shp`, and check to see that the CRS of the shapefile matches that of the landsat data using `.crs` (from the geopandas package) for the shapefile and `.rio.crs` (from the rioxarray package) for the raster. 
 
-```
+```python
 # Import Thomas Fire shapefile
 thomas_fire = gpd.read_file(os.path.join("data", "thomas_fire.shp"))
 
@@ -221,14 +221,14 @@ knitr::include_graphics("message.png")
 
 To plot the image, we must create an aspect ratio to correctly display the size. The aspect ratio is the width/height. 
 
-```
+```python
 # Map the false color image with the fire perimeter
 landsat_aspect_ratio = landsat.rio.width/landsat.rio.height
 ```
 
 Then, the figure is set up using the aspect ratio, and each figure element is plotted in sequence using the `matplotlib` package. 
 
-```
+```python
 # Setup figure
 fig, ax = plt.subplots(figsize = (6, 6*landsat_aspect_ratio))
 
