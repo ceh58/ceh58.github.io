@@ -46,7 +46,7 @@
     "href": "index.html#professional-experience",
     "title": "Carmen Hoyt",
     "section": "Professional Experience",
-    "text": "Professional Experience\nBiologist - AECOS, Kane’ohe, Hawai’i (1/23–7/24)\nAt AECOS, I analyzed and visualized environmental data using R, Python, ArcMap and ArcGIS Pro. I conducted natural resource surveys and collected geospatial data using a Trimble Geo 7x and an Autel Evo II drone. I produced technical reports using Microsoft Office and Adobe Acrobat, and I worked with clients to produce deliverables in a timely manner.\nSenior Research Assistant – Oceanic Institute at Hawai’i Pacific University Waimanalo, Hawai’i (6/21–1/23)\nWhile working as a Senior Research Assistant, I managed the algae lab and oversaw the installation and operation of two photobioreactors purchased under a federal grant awarded by the U.S. Department of Education. I collected long-term data, developed lab protocols, and was promoted to Senior Research Assistant for showing leadership and proficiency in all departments. Additionally, I created a marketing role for social media updates and outreach on Instagram and Facebook.\nAssistant Manager/SCUBA Instructor – Atlantic Pro Divers, Jacksonville Beach, Florida (5/20–7/21)\nAs Assistant Manager, I monitored store inventory and provided customer service. I planned dive trips and managed business marketing/newsletters, and I instructed PADI Open Water SCUBA courses.\nWaterfront Assistant – School for Field Studies, South Caicos, Turks and Caicos Islands (8/19–5/20) • Supervised student field research projects on coral disease, seagrass ecosystems, and finfish biodiversity • Managed campus residential life and guided recreational dives and snorkel trips for students • Operated and maintained a fleet of skiffs as well as an air compressor\nOpen Water SCUBA Instructor – PADI, Gili Trawangan, Indonesia (2/19–8/19) • Divemaster training with Diversia Diving • Instructor Development Course with Trawangan Dive Center • Freelance instruction for various shops\nAquaculture Intern – Indigo Seafood Palau, Inc., Koror, Palau (8/18–2/19) • Raised live feeds for larval leopard coral grouper Plectropomus leopardus in conjunction with Palau Community College • Led a small team of employees and conducted administrative duties\nLab Technician – Silliman Lab at Duke University Marine Laboratory (8/16–8/17) • Assisted in large-scale research and experiment set-up in seagrass habitats to study positive facilitations • Processed and recorded data for seagrass biomass, coverage, and growth • Operated and maintained a skiff"
+    "text": "Professional Experience\nBiologist - AECOS, Kane’ohe, Hawai’i (1/23–7/24)\nAt AECOS, I analyzed and visualized environmental data using R, Python, ArcMap and ArcGIS Pro. I conducted natural resource surveys and collected geospatial data using a Trimble Geo 7x and an Autel Evo II drone. I produced technical reports using Microsoft Office and Adobe Acrobat, and I worked with clients to produce deliverables in a timely manner.\nSenior Research Assistant – Oceanic Institute at Hawai’i Pacific University Waimanalo, Hawai’i (6/21–1/23)\nWhile working as a Senior Research Assistant, I managed the algae lab and oversaw the installation and operation of two photobioreactors purchased under a federal grant awarded by the U.S. Department of Education. I collected long-term data, developed lab protocols, and was promoted to Senior Research Assistant for showing leadership and proficiency in all departments. Additionally, I created a marketing role for social media updates and outreach on Instagram and Facebook.\nAssistant Manager/SCUBA Instructor – Atlantic Pro Divers, Jacksonville Beach, Florida (5/20–7/21)\nAs Assistant Manager, I monitored store inventory and formulated business newsletters to support marketing and drive sales. I demonstrated excellent customer service and planned PADI courses. I learned how to balance business expenses with profits, and I was given significant authority in shop decisions. When I wasn’t managing the shop, I was teaching the PADI courses that we offered as a 5-star dive center.\nWaterfront Assistant – School for Field Studies, South Caicos, Turks and Caicos Islands (8/19–5/20)\nThe Waterfront Assistant role with the School for Field Studies in the Turks and Caicos Islands was a 1-year contract that was cut a few months short due to COVID-19. My role during the program was to conduct and supervise field research as well as guide recreational dives and snorkels for college students. I was responsible for operating and maintaining three Carolina Skiffs and assisting SCUBA courses as a PADI Divemaster. When I was not in or on the water, I fulfilled more administrative roles aiding in the smooth operation of everyday life on campus including outreach to the local community.\nOpen Water SCUBA Instructor – PADI, Gili Trawangan, Indonesia (2/19–8/19)\nI worked as a PADI professional (Divemaster and Instructor) in Indonesia, the Turks and Caicos, and Florida. Since this role spanned different countries, I stayed up to date with PADI’s international rules and regulations to ensure quality control over the courses I taught.\nAquaculture Intern – Indigo Seafood Palau, Inc., Koror, Palau (8/18–2/19)\nThis internship my first introduction to aquaculture. I was responsible for the complete larval rearing of coral trout (Plectropomus leopardus) including egg collection, production of live feeds, and hatchery management. I also served as the lead business operator during my time, which included managing finances and other team members.\nLab Technician – Silliman Lab at Duke University Marine Laboratory (8/16–8/17)\nWorking as a summer time Research Technician for the Silliman Lab, I assisted graduate student (now Dr.) Stacy Zhang in the setup and maintenance of large-scale experiments focused on seagrass beds. I was responsible for collecting and recording data both in the field and in the lab in the form of fish surveys and seagrass biomass analysis. I learned crucial steps in the scientific method as well as gained exposure to publications and literature reviews."
   },
   {
     "objectID": "posts.html",
@@ -61,34 +61,6 @@
     "title": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python",
     "section": "",
     "text": "CitationBibTeX citation:@online{hoyt2024,\n  author = {Hoyt, Carmen},\n  title = {Using {False} {Color} {Imagery} to {Visualize} the {Impact}\n    of the {Thomas} {Fire} in {Python}},\n  date = {2024-12-01},\n  url = {https://ceh58.github.io/posts/2024-12-01-thomas-fire/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nHoyt, Carmen. 2024. “Using False Color Imagery to Visualize the\nImpact of the Thomas Fire in Python.” December 1, 2024. https://ceh58.github.io/posts/2024-12-01-thomas-fire/."
-  },
-  {
-    "objectID": "posts/2024-10-18-my-first-post/index.html",
-    "href": "posts/2024-10-18-my-first-post/index.html",
-    "title": "My First Post",
-    "section": "",
-    "text": "I’m going to insert a footnote here1"
-  },
-  {
-    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-first-section",
-    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-first-section",
-    "title": "My First Post",
-    "section": "",
-    "text": "I’m going to insert a footnote here1"
-  },
-  {
-    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
-    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
-    "title": "My First Post",
-    "section": "This is my second",
-    "text": "This is my second\nHere’s my next paragraph2\nI’m citing Sam3\nHere is more random text. I’m going to cite a journal article now4."
-  },
-  {
-    "objectID": "posts/2024-10-18-my-first-post/index.html#footnotes",
-    "href": "posts/2024-10-18-my-first-post/index.html#footnotes",
-    "title": "My First Post",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nHere is a new footnote.↩︎\nhere is my second footnote↩︎\nCsik and Csik (2024)↩︎\nGaynor et al. (2022)↩︎"
   },
   {
     "objectID": "posts/2024-12-01-thomas-fire/index.html#footnotes",
