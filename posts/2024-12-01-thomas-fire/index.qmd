@@ -1,5 +1,5 @@
 ---
-title: "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python"
+title: "Analyzing the Impact of the Thomas Fire in Python"
 #description: "blog post description (appears underneath the title in smaller text) which is included on the listing page"
 author:
   - name: Carmen Hoyt
@@ -27,15 +27,19 @@ The Thomas Fire burned over 280,000 acres (about 440 square miles) across Ventur
 
 [^1]: Read more about the Thomas fire [here](https://en.wikipedia.org/wiki/Thomas_Fire).
 
-This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to 'red', near infrared to 'green', and red to 'blue'), we can easily distinguish the burn scar from the surrounding vegetation. Bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green, in the false color image[^2].
+The first analysis[^2] uses imagery taken by [Landsat 8](https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2) on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to 'red', near infrared to 'green', and red to 'blue'), we can easily distinguish the burn scar from the surrounding vegetation. Bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green, in the false color image[^3]. We can then match the burn scar with the Thomas Fire perimeter, isolated from a [fire perimeters dataset](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436).
 
-[^2]: Read more about false color imagery [here](https://earthobservatory.nasa.gov/features/FalseColor).
+[^2]: This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4. See the assignment guidelines [here](https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html).
 
-*This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4 [^3].*
+[^3]: Read more about false color imagery [here](https://earthobservatory.nasa.gov/features/FalseColor).
 
-[^3]: See the assignment guidelines [here](https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html).
+The second analysis[^4] uses [Air Quality Index (AQI)](https://www.airnow.gov/aqi/aqi-basics/) data from the [US Environmental Protection Agency](https://www.epa.gov) to visualize the impact on the AQI of the 2017 Thomas Fire.
+
+[^4]: This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 2. See the assignment guidelines [here](https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment2.html).
 
 # Highlights
+
+Analysis 1:
 
 - This task explores assigning infrared bands to visible colors to obtain false color imagery.
 
@@ -43,9 +47,17 @@ This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight t
 
 - It is essential to match the Coordinate Reference Systems (CRSs) of shapefiles and rasters to obtain the final figure.
 
+Analysis 2:
+
+- This task uses `pandas` to wrangle dataframes.
+
+- It requires working with various datatypes, such as dates.
+
+- Using `matplotlib.pyplot`, we can create engaging visualizations!
+
 # Repository 
 
-More detailed information can be found on my [Thomas Fire GitHub Repository](https://github.com/ceh58/eds220-hwk4-repeat).
+More detailed information can be found on my [Thomas Fire GitHub Repository](https://github.com/ceh58/thomas-fire-analysis).
 
 #### Repository structure:
 
@@ -58,8 +70,9 @@ More detailed information can be found on my [Thomas Fire GitHub Repository](htt
 │  └── thomas_fire.shx
 ├── .gitignore
 ├── README.md
-├── hwk4-task2-false-color-HOYT.ipynb
-└── hwk4-task2-fire-perimeter-HOYT.ipynb
+├── aqi-analysis.ipynb
+├── false-color-analysis.ipynb
+└── fire-perimeter.ipynb
 ```
 
 # Dataset Descriptions
@@ -72,11 +85,15 @@ Fire Perimeters Data:
 
 The [fire perimeters dataset](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436) is an open-source dataset that contains information about the spatial distrubtion of past fires in California published by the State of California (and downloaded as a shapefile). 
 
+AQI Data:
+
+This analysis directly imports the US AQI (by county) data for [2017](https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2017.zip) and [2018](https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2018.zip) via zip file. Both datasets will need to be filtered for Santa Barbara county.
+
 # Analysis
 
 #### Part 1
 
-Derived from `hwk4-task2-fire-perimeter-HOYT.ipynb`.
+Derived from `fire-perimeter.ipynb`.
 
 First, import all necessary packages.
 
@@ -110,7 +127,7 @@ thomas_fire.to_file(os.path.join("data", "thomas_fire.shp"))
 ```
 #### Part 2
 
-Derived from `hwk4-task2-false-color-HOYT.ipynb`.
+Derived from `false-color-analysis.ipynb`.
 
 First, import all necessary packages.
 
@@ -268,6 +285,86 @@ Our final figure shows the burn scar of the Thomas Fire, displayed in red and ou
 knitr::include_graphics("final_plot.png")
 ```
 
+#### Part 3
+
+Derived from `aqi-analysis.ipynb`.
+
+First, import all necessary packages.
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+```
+
+Next, read in the data from the links and concat (stack) the dataframes. Then, clean the column names.
+
+```python
+# Read in data
+aqi_17 = pd.read_csv("https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2017.zip", compression = 'zip')
+aqi_18 = pd.read_csv("https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2018.zip", compression = 'zip')
+
+# Concat the two data frames
+aqi = pd.concat([aqi_17, aqi_18])
+
+# Simplify column names
+aqi.columns = (aqi.columns
+                  .str.lower()
+                  .str.replace(' ','_'))
+```
+
+Filter for county "Santa Barbara," and remove the `state_name`, `county_name`, `state_code`, and `county_code` columns.
+
+```python
+# Select only data from Santa Barbara County
+aqi_sb = aqi[aqi['county_name'] == "Santa Barbara"]
+
+# Remove desired columns
+aqi_sb = aqi_sb.drop(columns = ['state_name', 'county_name', 'state_code', 'county_code'])
+```
+
+Update the `date` column to `datetime` object, and then set it as the index.
+
+```python
+# Update `date` to datetime object
+aqi_sb.date = pd.to_datetime(aqi_sb.date)
+
+# Update the index to be the date column
+aqi_sb = aqi_sb.set_index('date')
+```
+
+Calculate the 5-day rolling mean, and add it as a new column.
+
+```python
+# Add AQI 5-day rolling mean to `aqi_sb` data frame
+aqi_sb['five_day_average'] = aqi_sb['aqi'].rolling('5D').mean()
+```
+
+Plot the AQI for Santa Barbara county.
+
+```python
+# Plot AQI and AQI rolling mean 
+aqi_sb.drop(columns = 'number_of_sites_reporting').plot.line(y = ['aqi', 'five_day_average'])
+
+# Add title
+plt.title("AQI in Santa Barbara County 2017-2018")
+
+# Label x-axis
+plt.xlabel("Date")
+
+# Label y-axis
+plt.ylabel("AQI")
+
+# Add legend
+plt.legend(['AQI', 'Five Day Average'])
+```
+
+```{r}
+#| echo: false
+knitr::include_graphics("aqi.png")
+```
+
+Our graph clearly shows a spike in AQI at the time of the Thomas Fire.
+
 # References
 
 Landsat data:
@@ -277,3 +374,7 @@ Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, & Tom Augspurge
 Fire perimeter data:
 
 State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). [https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436](https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436) Accessed: November 19, 2024
+
+AQI Data:
+
+U.S. Enivornmental Protection Agency. (2024). Air Quality Index Daily Values Report: July 2024 (2024.07.23). [https://www.epa.gov/outdoor-air-quality-data/air-quality-index-daily-values-report](https://www.epa.gov/outdoor-air-quality-data/air-quality-index-daily-values-report) Accessed: October 22, 2024

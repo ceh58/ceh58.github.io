@@ -9,7 +9,7 @@
 <meta name="author" content="Carmen Hoyt">
 <meta name="dcterms.date" content="2024-12-04">
 
-<title>Analyzing the Impact of the Thomas Fire in Python – Carmen Hoyt</title>
+<title>Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python – Carmen Hoyt</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
-      <h1 class="title">Analyzing the Impact of the Thomas Fire in Python</h1>
+      <h1 class="title">Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Python</div>
                 <div class="quarto-category">EDS220</div>
@@ -228,27 +228,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="about" class="level1">
 <h1>About</h1>
 <p>The Thomas Fire burned over 280,000 acres (about 440 square miles) across Ventura and Santa Barbara counties in December 2017, the largest wildfire in modern California history at the time. The main catalyst for the fire’s rapid spread was unseasonably strong Santa Ana wind that brought warm air and low humidity. In the end, 1,063 structures were lost, over 104,607 residents were forced to leave their homes, and damages totaled over $2.2 billion. Lasting environmental effects of the fire included poor air quality and mudflows during the successive rainy season as a result of the vegetation loss<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<p>The first analysis<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> uses imagery taken by <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">Landsat 8</a> on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to ‘red’, near infrared to ‘green’, and red to ‘blue’), we can easily distinguish the burn scar from the surrounding vegetation. Bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green, in the false color image<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. We can then match the burn scar with the Thomas Fire perimeter, isolated from a <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">fire perimeters dataset</a>.</p>
-<p>The second analysis<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a> uses <a href="https://www.airnow.gov/aqi/aqi-basics/">Air Quality Index (AQI)</a> data from the <a href="https://www.epa.gov">US Environmental Protection Agency</a> to visualize the impact on the AQI of the 2017 Thomas Fire.</p>
+<p>This analysis uses imagery taken by Landsat 8 on January 16, 2018 to highlight the burn scar left by the Thomas Fire after it was considered fully contained (January 12, 2018). By assigning infrared bands to visible colors (short wave infrared to ‘red’, near infrared to ‘green’, and red to ‘blue’), we can easily distinguish the burn scar from the surrounding vegetation. Bare earth/dead vegetation reflects swir (short wave infrared), appearing red, and healthy vegetation reflects nir (near infrared), appearing green, in the false color image<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>.</p>
+<p><em>This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4 <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</em></p>
 </section>
 <section id="highlights" class="level1">
 <h1>Highlights</h1>
-<p>Analysis 1:</p>
 <ul>
 <li><p>This task explores assigning infrared bands to visible colors to obtain false color imagery.</p></li>
 <li><p>Necessary steps include cleaning rasters with the <code>rioxarray</code> package as well as filtering geo-dataframes with <code>geopandas</code> package.</p></li>
 <li><p>It is essential to match the Coordinate Reference Systems (CRSs) of shapefiles and rasters to obtain the final figure.</p></li>
 </ul>
-<p>Analysis 2:</p>
-<ul>
-<li><p>This task uses <code>pandas</code> to wrangle dataframes.</p></li>
-<li><p>It requires working with various datatypes, such as dates.</p></li>
-<li><p>Using <code>matplotlib.pyplot</code>, we can create engaging visualizations!</p></li>
-</ul>
 </section>
 <section id="repository" class="level1">
 <h1>Repository</h1>
-<p>More detailed information can be found on my <a href="https://github.com/ceh58/thomas-fire-analysis">Thomas Fire GitHub Repository</a>.</p>
+<p>More detailed information can be found on my <a href="https://github.com/ceh58/eds220-hwk4-repeat">Thomas Fire GitHub Repository</a>.</p>
 <section id="repository-structure" class="level4">
 <h4 class="anchored" data-anchor-id="repository-structure">Repository structure:</h4>
 <pre><code>├── data
@@ -259,9 +252,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 │  └── thomas_fire.shx
 ├── .gitignore
 ├── README.md
-├── aqi-analysis.ipynb
-├── false-color-analysis.ipynb
-└── fire-perimeter.ipynb</code></pre>
+├── hwk4-task2-false-color-HOYT.ipynb
+└── hwk4-task2-fire-perimeter-HOYT.ipynb</code></pre>
 </section>
 </section>
 <section id="dataset-descriptions" class="level1">
@@ -270,14 +262,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>The landsat dataset used in this analysis is a cleaned, simplified collection of bands (red, green, blue, nir, swir) from <a href="https://planetarycomputer.microsoft.com/dataset/landsat-c2-l2">Landsat Collection 2 Level-2</a> (collected by Landsat 8 satellite) that was prepared specifically for this project.</p>
 <p>Fire Perimeters Data:</p>
 <p>The <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">fire perimeters dataset</a> is an open-source dataset that contains information about the spatial distrubtion of past fires in California published by the State of California (and downloaded as a shapefile).</p>
-<p>AQI Data:</p>
-<p>This analysis directly imports the US AQI (by county) data for <a href="https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2017.zip">2017</a> and <a href="https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2018.zip">2018</a> via zip file. Both datasets will need to be filtered for Santa Barbara county.</p>
 </section>
 <section id="analysis" class="level1">
 <h1>Analysis</h1>
 <section id="part-1" class="level4">
 <h4 class="anchored" data-anchor-id="part-1">Part 1</h4>
-<p>Derived from <code>fire-perimeter.ipynb</code>.</p>
+<p>Derived from <code>hwk4-task2-fire-perimeter-HOYT.ipynb</code>.</p>
 <p>First, import all necessary packages.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -303,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="part-2" class="level4">
 <h4 class="anchored" data-anchor-id="part-2">Part 2</h4>
-<p>Derived from <code>false-color-analysis.ipynb</code>.</p>
+<p>Derived from <code>hwk4-task2-false-color-HOYT.ipynb</code>.</p>
 <p>First, import all necessary packages.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -447,65 +437,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="part-3" class="level4">
-<h4 class="anchored" data-anchor-id="part-3">Part 3</h4>
-<p>Derived from <code>aqi-analysis.ipynb</code>.</p>
-<p>First, import all necessary packages.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Next, read in the data from the links and concat (stack) the dataframes. Then, clean the column names.</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in data</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>aqi_17 <span class="op">=</span> pd.read_csv(<span class="st">"https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2017.zip"</span>, compression <span class="op">=</span> <span class="st">'zip'</span>)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>aqi_18 <span class="op">=</span> pd.read_csv(<span class="st">"https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_2018.zip"</span>, compression <span class="op">=</span> <span class="st">'zip'</span>)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Concat the two data frames</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>aqi <span class="op">=</span> pd.concat([aqi_17, aqi_18])</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Simplify column names</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>aqi.columns <span class="op">=</span> (aqi.columns</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.lower()</span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>                  .<span class="bu">str</span>.replace(<span class="st">' '</span>,<span class="st">'_'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Filter for county “Santa Barbara,” and remove the <code>state_name</code>, <code>county_name</code>, <code>state_code</code>, and <code>county_code</code> columns.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Select only data from Santa Barbara County</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi[aqi[<span class="st">'county_name'</span>] <span class="op">==</span> <span class="st">"Santa Barbara"</span>]</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove desired columns</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi_sb.drop(columns <span class="op">=</span> [<span class="st">'state_name'</span>, <span class="st">'county_name'</span>, <span class="st">'state_code'</span>, <span class="st">'county_code'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Update the <code>date</code> column to <code>datetime</code> object, and then set it as the index.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update `date` to datetime object</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>aqi_sb.date <span class="op">=</span> pd.to_datetime(aqi_sb.date)</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Update the index to be the date column</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>aqi_sb <span class="op">=</span> aqi_sb.set_index(<span class="st">'date'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Calculate the 5-day rolling mean, and add it as a new column.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Add AQI 5-day rolling mean to `aqi_sb` data frame</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>aqi_sb[<span class="st">'five_day_average'</span>] <span class="op">=</span> aqi_sb[<span class="st">'aqi'</span>].rolling(<span class="st">'5D'</span>).mean()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Plot the AQI for Santa Barbara county.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot AQI and AQI rolling mean </span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>aqi_sb.drop(columns <span class="op">=</span> <span class="st">'number_of_sites_reporting'</span>).plot.line(y <span class="op">=</span> [<span class="st">'aqi'</span>, <span class="st">'five_day_average'</span>])</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add title</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"AQI in Santa Barbara County 2017-2018"</span>)</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Label x-axis</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Date"</span>)</span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Label y-axis</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"AQI"</span>)</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend</span></span>
-<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>plt.legend([<span class="st">'AQI'</span>, <span class="st">'Five Day Average'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="aqi.png" class="img-fluid figure-img" width="728"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Our graph clearly shows a spike in AQI at the time of the Thomas Fire.</p>
-</section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
@@ -513,8 +444,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Microsoft Open Source, Matt McFarland, Rob Emanuele, Dan Morris, &amp; Tom Augspurger. (2022). microsoft/PlanetaryComputer: October 2022 (2022.10.28). Zenodo. <a href="https://doi.org/10.5281/zenodo.7261897">https://doi.org/10.5281/zenodo.7261897</a> Accessed: November 19, 2024</p>
 <p>Fire perimeter data:</p>
 <p>State of California, Kimberly Wallin. (2024). CAL FIRE: May 2024 (2024.05.14). <a href="https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436">https://catalog.data.gov/dataset/california-fire-perimeters-all-b3436</a> Accessed: November 19, 2024</p>
-<p>AQI Data:</p>
-<p>U.S. Enivornmental Protection Agency. (2024). Air Quality Index Daily Values Report: July 2024 (2024.07.23). <a href="https://www.epa.gov/outdoor-air-quality-data/air-quality-index-daily-values-report">https://www.epa.gov/outdoor-air-quality-data/air-quality-index-daily-values-report</a> Accessed: October 22, 2024</p>
 
 
 </section>
@@ -524,9 +453,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <ol>
 <li id="fn1"><p>Read more about the Thomas fire <a href="https://en.wikipedia.org/wiki/Thomas_Fire">here</a>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4. See the assignment guidelines <a href="https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn3"><p>Read more about false color imagery <a href="https://earthobservatory.nasa.gov/features/FalseColor">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 2. See the assignment guidelines <a href="https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment2.html">here</a>.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Read more about false color imagery <a href="https://earthobservatory.nasa.gov/features/FalseColor">here</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>See the assignment guidelines <a href="https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment4.html">here</a>.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
