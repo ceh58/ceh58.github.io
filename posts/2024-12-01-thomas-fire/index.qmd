@@ -95,7 +95,7 @@ Derived from `fire-perimeter.ipynb`.
 
 First, import all necessary packages.
 
-```{python}
+```python
 import os
 import pandas as pd
 import geopandas as gpd
