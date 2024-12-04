@@ -339,7 +339,7 @@ Calculate the 5-day rolling mean, and add it as a new column.
 aqi_sb['five_day_average'] = aqi_sb['aqi'].rolling('5D').mean()
 ```
 
-Plot the AQI for Santa Barbara county.
+Plot the AQI for Santa Barbara county 2017-2018.
 
 ```python
 # Plot AQI and AQI rolling mean 
