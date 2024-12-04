@@ -1,5 +1,33 @@
 [
   {
+    "objectID": "DELETE-LATER/practice.html",
+    "href": "DELETE-LATER/practice.html",
+    "title": "Here is my level one header",
+    "section": "",
+    "text": "Here is my level one header\nHere is my first paragraph\nHere is my second paragraph, where you can read more about MEDS.\nThis is very important text!"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "some text here"
+  },
+  {
+    "objectID": "about.html#what-i-do-for-work",
+    "href": "about.html#what-i-do-for-work",
+    "title": "About",
+    "section": "",
+    "text": "some text here"
+  },
+  {
+    "objectID": "about.html#what-i-do-for-fun",
+    "href": "about.html#what-i-do-for-fun",
+    "title": "About",
+    "section": "What I do for fun",
+    "text": "What I do for fun\n\ngive the people what they want, which is fun stuff\n\nUnderwater photography: https://www.instagram.com/carmen.underwater/\n\nhere is a line\nhere is another line"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Carmen Hoyt",
@@ -11,20 +39,69 @@
     "href": "index.html#education",
     "title": "Carmen Hoyt",
     "section": "Education",
-    "text": "Education\nsome text here"
+    "text": "Education\nDuke University, B.S. Biology and B.S. Earth and Ocean Sciences (2018)\nUniversity of California, Santa Barbara Master of Environmental Data Science (2025)"
   },
   {
     "objectID": "index.html#professional-experience",
     "href": "index.html#professional-experience",
     "title": "Carmen Hoyt",
     "section": "Professional Experience",
-    "text": "Professional Experience\nsome text here"
+    "text": "Professional Experience\nBiologist - AECOS, Kane’ohe, Hawai’i (1/23–7/24)\nAt AECOS, I analyzed and visualized environmental data using R, Python, ArcMap and ArcGIS Pro. I conducted natural resource surveys and collected geospatial data using a Trimble Geo 7x and an Autel Evo II drone. I produced technical reports using Microsoft Office and Adobe Acrobat, and I worked with clients to produce deliverables in a timely manner.\nSenior Research Assistant – Oceanic Institute at Hawai’i Pacific University Waimanalo, Hawai’i (6/21–1/23)\nWhile working as a Senior Research Assistant, I managed the algae lab and oversaw the installation and operation of two photobioreactors purchased under a federal grant awarded by the U.S. Department of Education. I collected long-term data, developed lab protocols, and was promoted to Senior Research Assistant for showing leadership and proficiency in all departments. Additionally, I created a marketing role for social media updates and outreach on Instagram and Facebook.\nAssistant Manager/SCUBA Instructor – Atlantic Pro Divers, Jacksonville Beach, Florida (5/20–7/21)\nAs Assistant Manager, I monitored store inventory and provided customer service. I planned dive trips and managed business marketing/newsletters, and I instructed PADI Open Water SCUBA courses.\nWaterfront Assistant – School for Field Studies, South Caicos, Turks and Caicos Islands (8/19–5/20) • Supervised student field research projects on coral disease, seagrass ecosystems, and finfish biodiversity • Managed campus residential life and guided recreational dives and snorkel trips for students • Operated and maintained a fleet of skiffs as well as an air compressor\nOpen Water SCUBA Instructor – PADI, Gili Trawangan, Indonesia (2/19–8/19) • Divemaster training with Diversia Diving • Instructor Development Course with Trawangan Dive Center • Freelance instruction for various shops\nAquaculture Intern – Indigo Seafood Palau, Inc., Koror, Palau (8/18–2/19) • Raised live feeds for larval leopard coral grouper Plectropomus leopardus in conjunction with Palau Community College • Led a small team of employees and conducted administrative duties\nLab Technician – Silliman Lab at Duke University Marine Laboratory (8/16–8/17) • Assisted in large-scale research and experiment set-up in seagrass habitats to study positive facilitations • Processed and recorded data for seagrass biomass, coverage, and growth • Operated and maintained a skiff"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts.html",
+    "href": "posts.html",
+    "title": "Blog",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Analyzing the Impact of the Thomas Fire in Python\n\n\n\nPython\n\n\nEDS220\n\n\nLandsat\n\n\n\n\n\n\n\nCarmen Hoyt\n\n\nDec 4, 2024\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/2024-12-01-thomas-fire/index.html",
+    "href": "posts/2024-12-01-thomas-fire/index.html",
+    "title": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python",
+    "section": "",
+    "text": "CitationBibTeX citation:@online{hoyt2024,\n  author = {Hoyt, Carmen},\n  title = {Using {False} {Color} {Imagery} to {Visualize} the {Impact}\n    of the {Thomas} {Fire} in {Python}},\n  date = {2024-12-01},\n  url = {https://ceh58.github.io/posts/2024-12-01-thomas-fire/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nHoyt, Carmen. 2024. “Using False Color Imagery to Visualize the\nImpact of the Thomas Fire in Python.” December 1, 2024. https://ceh58.github.io/posts/2024-12-01-thomas-fire/."
+  },
+  {
+    "objectID": "posts/2024-10-18-my-first-post/index.html",
+    "href": "posts/2024-10-18-my-first-post/index.html",
+    "title": "My First Post",
+    "section": "",
+    "text": "I’m going to insert a footnote here1"
+  },
+  {
+    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-first-section",
+    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-first-section",
+    "title": "My First Post",
+    "section": "",
+    "text": "I’m going to insert a footnote here1"
+  },
+  {
+    "objectID": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
+    "href": "posts/2024-10-18-my-first-post/index.html#this-is-my-second",
+    "title": "My First Post",
+    "section": "This is my second",
+    "text": "This is my second\nHere’s my next paragraph2\nI’m citing Sam3\nHere is more random text. I’m going to cite a journal article now4."
+  },
+  {
+    "objectID": "posts/2024-10-18-my-first-post/index.html#footnotes",
+    "href": "posts/2024-10-18-my-first-post/index.html#footnotes",
+    "title": "My First Post",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nHere is a new footnote.↩︎\nhere is my second footnote↩︎\nCsik and Csik (2024)↩︎\nGaynor et al. (2022)↩︎"
+  },
+  {
+    "objectID": "posts/2024-12-01-thomas-fire/index.html#footnotes",
+    "href": "posts/2024-12-01-thomas-fire/index.html#footnotes",
+    "title": "Analyzing the Impact of the Thomas Fire in Python",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRead more about the Thomas fire here.↩︎\nThis analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 4. See the assignment guidelines here.↩︎\nRead more about false color imagery here.↩︎\nThis analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 2. See the assignment guidelines here.↩︎"
+  },
+  {
+    "objectID": "posts/2024-12-01-thomas-fire/index.knit.html#footnotes",
+    "href": "posts/2024-12-01-thomas-fire/index.knit.html#footnotes",
+    "title": "Using False Color Imagery to Visualize the Impact of the Thomas Fire in Python",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nRead more about the Thomas fire here.↩︎\nRead more about false color imagery here.↩︎\nSee the assignment guidelines here.↩︎"
   }
 ]

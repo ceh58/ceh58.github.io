@@ -1,0 +1,57 @@
+/*-- scss:defaults --*/
+
+// Import Google Fonts 
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+// Create font variables
+$pt-sans: "PT Sans", sans-serif;
+
+// Colors
+$richblack: #031926;
+$teal: #468189;
+$cambridgeblue: #77ACA2;
+$ashgray: #9DBEBB;
+$parchment: #F4E9CD;
+$darkgray: #333333;
+
+// Quarto Sass variables
+$body-bg: $parchment;
+$navbar-bg: $cambridgeblue;
+$navbar-fg: $darkgray;
+$navbar-hl: $teal;
+
+/*-- scss:rules --*/
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $pt-sans;
+}
+
+h1, h2 {
+  letter-spacing: 5px;
+  font-weight: 800;
+}
+
+.title {
+  color: $teal;
+}
+
+.center-text {
+  text-align: center;
+}
+
+.blue-text {
+  color: $cambridgeblue;
+}
+
+.center-teal {
+  text-align: center;
+  color: $teal;
+}
+
+.navbar-brand img {
+  max-height: 40px;
+  width: auto;
+}
+
+
+

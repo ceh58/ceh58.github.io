@@ -1,0 +1,15 @@
+{
+  "hash": "a6697ee3f5bea4249f82240ee252785f",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"My First Post\"\ndescription: \"A short catchy description of the blog post.\"\nauthor: \n  - name: Carmen Hoyt\n    url: https://ceh58.github.io/\n    affiliation: MEDS\n    affiliation-url: https://bren.ucsb.edu/masters-programs/master-environmental-data-science\ndate: 2024-10-18\ncategories: [Quarto, MEDS, something-cool]\ntoc: true\npage-layout: full\nbibliography: references.bib\n#csl: plos-computational-biology.csl\nimage: whales.jpg\ncitation:\n  url: https://ceh58.github.io/posts/2024-10-18-my-first-post/\ndraft: true\n#draft-mode: visible\n---\n\n\n\n## This is my first section\n\nI'm going to insert a footnote here[^1]\n\n[^1]: Here is a new footnote.\n\n## This is my second\n\nHere's my next paragraph[^2]\n\n[^2]: here is my second footnote\n\nI'm citing Sam[^3]\n\n[^3]: @csik2024\n\nHere is more random text. I'm going to cite a journal article now^[@gaynor2022].\n\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](whales.jpg)\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
