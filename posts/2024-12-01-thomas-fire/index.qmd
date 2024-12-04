@@ -14,6 +14,8 @@ toc: true
  # url: https://ceh58.github.io/posts/2024-12-01-thomas-fire/ 
 image: thomas-fire.jpg
 draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r}
@@ -318,7 +320,7 @@ Filter for county "Santa Barbara," and remove the `state_name`, `county_name`, `
 # Select only data from Santa Barbara County
 aqi_sb = aqi[aqi['county_name'] == "Santa Barbara"]
 
-# Remove desired columns
+# Remove specified columns
 aqi_sb = aqi_sb.drop(columns = ['state_name', 'county_name', 'state_code', 'county_code'])
 ```
 
