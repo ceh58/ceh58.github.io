@@ -31,7 +31,7 @@ The first analysis[^2] uses imagery taken by [Landsat 8](https://planetarycomput
 
 [^3]: Read more about false color imagery [here](https://earthobservatory.nasa.gov/features/FalseColor).
 
-The second analysis[^4] uses [Air Quality Index (AQI)](https://www.airnow.gov/aqi/aqi-basics/) data from the [US Environmental Protection Agency](https://www.epa.gov) to visualize the impact on the AQI of the 2017 Thomas Fire.
+The second analysis[^4] uses [Air Quality Index (AQI)](https://www.airnow.gov/aqi/aqi-basics/) data from the [US Environmental Protection Agency](https://www.epa.gov) to visualize the impact of the Thomas Fire on the AQI of Santa Barbara County from 2017-2018.
 
 [^4]: This analysis was part of EDS 220: Working with Environmental Datasets - Homework Assignment 2. See the assignment guidelines [here](https://meds-eds-220.github.io/MEDS-eds-220-course/assignments/assignment2.html).
 
@@ -214,7 +214,7 @@ knitr::include_graphics("false_color.png")
 
 Finally, we can create our figure.
 
-In order to do this, we must import the Thomas Fire perimeter shapefile we previously saved in Part 1, `thomas_fire.shp`, and check to see that the CRS of the shapefile matches that of the landsat data using `.crs` (from the `geopandas` package) for the shapefile and `.rio.crs` (from the `rioxarray` package) for the raster. 
+In order to do this, we must import the Thomas Fire perimeter shapefile we previously saved in Part 1, `thomas_fire.shp`. Check to see that the CRS of the shapefile matches that of the landsat data using `.crs` (from the `geopandas` package) for the shapefile and `.rio.crs` (from the `rioxarray` package) for the raster data. 
 
 ```python
 # Import Thomas Fire shapefile
@@ -276,7 +276,7 @@ ax.set_title("Thomas Fire Scar (2017)", fontsize=14, fontweight='bold')
 plt.show()
 ```
 
-Our final figure shows the burn scar of the Thomas Fire, displayed in red and outlined by the fire boundary. 
+Our final figure shows the burn scar of the Thomas Fire, displayed in red, outlined by the fire boundary. 
 
 ```{r}
 #| echo: false
