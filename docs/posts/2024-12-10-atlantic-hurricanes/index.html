@@ -7,7 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Carmen Hoyt">
-<meta name="dcterms.date" content="2024-12-11">
+<meta name="dcterms.date" content="2024-12-12">
+<meta name="description" content="An assessment of the factors driving the costs of hurricane damage.">
 
 <title>Hurricanes in the Atlantic – Carmen Hoyt</title>
 <style>
@@ -185,8 +186,12 @@ window.Quarto = {
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-page-left">
       <h1 class="title">Hurricanes in the Atlantic</h1>
-            <p class="subtitle lead">An assessment of the factors driving the costs of hurricane damage.</p>
-                                <div class="quarto-categories">
+                  <div>
+        <div class="description">
+          An assessment of the factors driving the costs of hurricane damage.
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">R</div>
                 <div class="quarto-category">EDS222</div>
                 <div class="quarto-category">Statistics</div>
@@ -216,7 +221,7 @@ window.Quarto = {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 11, 2024</p>
+        <p class="date">December 12, 2024</p>
       </div>
     </div>
     
@@ -262,15 +267,14 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>For more information, visit my <a href="https://github.com/ceh58/atlantic-hurricanes">GitHub Repository</a>.</p>
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
-<p>Growing up on the Gulf Coast of Florida, my family and I were no strangers to hurricanes. We have lived in the same house for over 20 years, where some of my favorite hurricane memories included missing school, kayaking in the streets, and rushing our ice cream to our neighbor’s generator-powered freezer before it melted. However, recent hurricane seasons<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> have brought a somber increase in flooding and severe damage. Storm preparations for many Floridians have changed from generally playful “hurricane parties” to fearful arrangements for evacuation, reflecting a dynamic shift in the severity of these events.</p>
+<p>Growing up on the Gulf Coast of Florida, my family and I were no strangers to hurricanes. We have lived in the same house for over 20 years, where some of my favorite hurricane memories included missing school, kayaking in the streets, and rushing ice cream to our neighbor’s generator-powered freezer before it melted. However, recent hurricane seasons<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> have brought a somber increase in flooding and severe damage. Storm preparations for many Floridians have changed from generally playful “hurricane parties” to fearful arrangements for evacuation, reflecting a dynamic shift in the severity of these events.</p>
 <p>Climate change is influencing natural disasters across the board, and hurricanes are no exception. While the frequency of storms is not projected to change, they are predicted to become more intense<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Hurricane “intensity” is measured by the Saffir-Simpson scale<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> in 5 categories based on wind speed. Storms assigned a category 3 or higher are considered “major hurricanes,” expected to bring catastrophic damage (and thus more significant damage costs to the community).</p>
-<p>For example, Hurricane Ian was a Category 5 storm that landed near Fort Myers, Florida in September 2022. It was the fifth-strongest hurricane to hit the contiguous U.S. and the third most expensive weather disaster worldwide at the time, totaling $113 billion in damages<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This storm stands out as the worst to hit our neighborhood during my lifetime, bringing an unprecedented 7 feet of storm surge into our home.</p>
+<p>For example, Hurricane Ian was a category 5 storm that landed near Fort Myers, Florida in September 2022. It was the fifth-strongest hurricane to hit the contiguous U.S. and the third most expensive weather disaster worldwide at the time, totaling $113 billion in damages<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. This storm stands out as the worst to hit our neighborhood during my lifetime, bringing an unprecedented 7 feet of storm surge into our home.</p>
 <p>My personal observations and research on the topic lead me to my question: <strong>as storms increase in intensity, are damage costs also being driven by time?</strong></p>
 <p>In other words, are we seeing a rise in the damage costs associated with these natural disasters, and what can we expect in the future? To answer this question, I used Kaggle’s <a href="https://www.kaggle.com/datasets/middlehigh/north-american-hurricanes-from-2000">North American Hurricanes from 2000</a> dataset to develop a model of the factors driving hurricane damage costs. Of these factors, I predict that time affects damage costs (increasing over time).</p>
-<p>To test this prediction, I establish a null (H0) and alternative (HA) hypotheses:</p>
+<p>To test this prediction, I established a null (H0) and alternative (HA) hypotheses:</p>
 <ul>
 <li>H0: Time has no effect on damage costs.</li>
 <li>HA: Time has an effect on damage costs.</li>
@@ -278,6 +282,7 @@ window.Quarto = {
 </section>
 <section id="methods" class="level1">
 <h1>Methods</h1>
+<p>For the full analysis, visit my <a href="https://github.com/ceh58/atlantic-hurricanes">GitHub Repository</a>.</p>
 <section id="import-packages" class="level2">
 <h2 class="anchored" data-anchor-id="import-packages">Import packages</h2>
 <div class="cell">
@@ -292,7 +297,7 @@ window.Quarto = {
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Using the above R packages, I begin my analysis by investigating the NA values associated with damage costs (<code>damage_usd</code>). There are 14 in total, and they appear to be proportionally distributed among hurricane categories; so, I decide to remove them.</p>
+<p>Using the above R packages, I began my analysis by investigating the NA values associated with damage costs (<code>damage_usd</code>). There are 14 in total, and they appear to be proportionally distributed among hurricane categories; so, I decided to remove them.</p>
 </section>
 <section id="import-data" class="level2">
 <h2 class="anchored" data-anchor-id="import-data">Import data</h2>
@@ -332,14 +337,15 @@ window.Quarto = {
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Category =</span> category,</span>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>         <span class="at">Count =</span> count)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>na_table <span class="ot">&lt;-</span> <span class="fu">left_join</span>(total_storms, na_storms, <span class="at">by =</span> <span class="st">"Category"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"Total Storms"</span> <span class="ot">=</span> Count.x,</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>         <span class="st">"NA Damage"</span> <span class="ot">=</span> Count.y) <span class="sc">%&gt;%</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">factor</span>(Category, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'TS'</span>, <span class="st">'Category 1'</span>, <span class="st">'Category 2'</span>, <span class="st">'Category 3'</span>, <span class="st">'Category 4'</span>, <span class="st">'Category 5'</span>))) <span class="sc">%&gt;%</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>na_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge total storms and na values</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>na_table <span class="ot">&lt;-</span> <span class="fu">left_join</span>(total_storms, na_storms, <span class="at">by =</span> <span class="st">"Category"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"Total Storms"</span> <span class="ot">=</span> Count.x,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>         <span class="st">"NA Damage"</span> <span class="ot">=</span> Count.y) <span class="sc">%&gt;%</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">factor</span>(Category, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">'TS'</span>, <span class="st">'Category 1'</span>, <span class="st">'Category 2'</span>, <span class="st">'Category 3'</span>, <span class="st">'Category 4'</span>, <span class="st">'Category 5'</span>))) <span class="sc">%&gt;%</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kbl</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">kable_styling</span>()</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>na_table</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <table class="table caption-top table-sm table-striped small" data-quarto-postprocess="true">
@@ -404,7 +410,7 @@ window.Quarto = {
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">time =</span> year <span class="sc">-</span> <span class="dv">2000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>To test my hypothesis, I will need to calculate the regression coefficient (Beta) associated with time. In order to calculate this sample statistic, I need to develop a model for damage costs. I am primarily interested in the following variables from my dataset:</p>
+<p>To test my hypothesis, I calculated the regression coefficient (<span class="math inline">\(\beta_i\)</span>) associated with time. In order to calculate this sample statistic, I need to develop a model for damage costs. I am primarily interested in the following variables from the dataset:</p>
 <ul>
 <li><p><code>year</code>: the year the storm occurred</p></li>
 <li><p><code>rain_inch</code>: rainfall (inches)</p></li>
@@ -412,33 +418,20 @@ window.Quarto = {
 <li><p><code>damage_usd</code>: damage costs in USD</p></li>
 <li><p><code>affected_areas</code>: list of places affected</p></li>
 </ul>
-<p>I chose these variables because they are characteristics of the storm that potentially have a relationship with storm damage costs. While variables such as “fatalities” are likely correlated with damage costs, they are more likely a <em>result</em> of storm intensity rather than a predictor. I also chose to forego <code>category</code> since we are already have a variable for wind speed.</p>
-<p>The category 5 classification encompasses wind speeds of 157+ mph. As an open-ended category, increased damage costs may be associated with an increasing number of Category 5 storms. More storms will likely be classified as Category 5 due to increasing wind speeds (as a result of increasing storm intensity). So, max wind speed (<code>highest_wind_speed</code>) will likely be the most important predictor in my model. Since rainfall (<code>rain_inch</code>) intensity is also expected to increase with climate change, it will be crucial to include as well.</p>
+<p>I chose these variables because they are storm characteristics that potentially have a relationship with damage costs. While variables such as “fatalities” are likely correlated with damage costs, they are more likely a <em>result</em> of storm intensity rather than a predictor. I also chose to forego <code>category</code> since we are already have a variable for wind speed.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wind speed over time</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>wind_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> highest_wind_speed)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cost of damage over time</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> damage_mil, <span class="at">color =</span> <span class="fu">factor</span>(category, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"TS"</span>, <span class="st">"Category 1"</span>, <span class="st">"Category 2"</span>, <span class="st">"Category 3"</span>, <span class="st">"Category 4"</span>, <span class="st">"Category 5"</span>), <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"TS"</span>, <span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span>, <span class="st">"4"</span>, <span class="st">"5"</span>)))) <span class="sc">+</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Max Wind Speed (mph)"</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Max Wind Speed over Time"</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">157</span>,</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Wind vs. damage</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>wind_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> highest_wind_speed, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Max Wind Speed (mph)"</span>,</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Max Wind Speed"</span>) <span class="sc">+</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>wind_time <span class="sc">/</span> wind_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage (Millions of USD)"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs over Time by Category"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Category"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Reds"</span>) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -448,29 +441,32 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p><em>You can see how the time period 2000-2014 had 2 category 5 storms while the time period 2015-2023 has 8.</em></p>
+<p>The category 5 classification encompasses wind speeds of 157+ mph. As an open-ended category, increased damage costs may be associated with an increasing number of category 5 storms. More storms will likely be classified as category 5 due to increasing wind speeds (as a result of increasing storm intensity). So, max wind speed (<code>highest_wind_speed</code>) will likely be the most important predictor in my model. Since rainfall (<code>rain_inch</code>) intensity is also expected to increase with climate change, it will be crucial to include as well.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rainfall over time</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>rain_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rain_inch)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wind speed over time</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>wind_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> highest_wind_speed)) <span class="sc">+</span></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rainfall (in)"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rainfall over Time"</span>) <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Rain vs. damage</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>rain_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> rain_inch, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rainfall (in)"</span>,</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Rainfall"</span>) <span class="sc">+</span></span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>rain_time <span class="sc">/</span>rain_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Max Wind Speed (mph)"</span>,</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Max Wind Speed over Time"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span><span class="dv">157</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"firebrick"</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Wind vs. damage costs</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>wind_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> highest_wind_speed, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Max Wind Speed (mph)"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Max Wind Speed"</span>) <span class="sc">+</span></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>wind_time <span class="sc">/</span> wind_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -480,29 +476,29 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>I created two new variables to include in the model. The first one measures the number of places affected, <code>total_areas</code>, calculated by counting how many “areas” are listed in the <code>areas_affected</code> column from the original dataset. While it seems intuitive that <code>total_areas</code> may increase over time, that isn’t the case (FIGURE?). However, there is still a relationship between <code>total_areas</code> and <code>damage_mill</code>, so we will include it. The last factor that I am interested in is time. Since we are looking at change over time, and 2000 is the start of the dataset, I calculated the <code>time</code> variable to be the number of years since 2000 that the storm occurred.</p>
+<p><em>You can see how the time period 2000-2014 had 2 category 5 storms while the time period 2015-2023 had 8.</em></p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of places over time</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>places_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_areas)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Rainfall over time</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>rain_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> rain_inch)) <span class="sc">+</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of Places Affected"</span>,</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Number of Places Affected over Time"</span>) <span class="sc">+</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Rainfall (in)"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Rainfall over Time"</span>) <span class="sc">+</span></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
 <span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of places vs. damage costs</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>places_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> total_areas, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Rain vs. damage costs</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>rain_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> rain_inch, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
 <span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of Places Affected"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rainfall (in)"</span>,</span>
 <span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Number of Places Affected"</span>) <span class="sc">+</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Rainfall"</span>) <span class="sc">+</span></span>
 <span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
 <span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
 <span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>places_time <span class="sc">/</span> places_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>rain_time <span class="sc">/</span>rain_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -512,17 +508,29 @@ window.Quarto = {
 </div>
 </div>
 </div>
+<p>I created two new variables from <code>areas_affected</code> and <code>year</code> to include in the model. The first one measures the number of places affected, calculated by counting how many “areas” are listed in the <code>areas_affected</code> column from the original dataset. While it seems intuitive that <code>total_areas</code> may increase over time, that isn’t the case (see below). However, there is still a relationship between <code>total_areas</code> and <code>damage_mill</code>, so we will include it. The last factor that I am interested in is time. Since we are looking at change over time, and 2000 is the start of the dataset, I calculated the <code>time</code> variable to be the number of years since 2000 that the storm occurred.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Damage costs over time</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of places over time</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>places_time <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> total_areas)) <span class="sc">+</span></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (Years since 2000)"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Time"</span>) <span class="sc">+</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Number of Places Affected"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Number of Places Affected over Time"</span>) <span class="sc">+</span></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Number of places vs. damage costs</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>places_damage <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> total_areas, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Number of Places Affected"</span>,</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Number of Places Affected"</span>) <span class="sc">+</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>places_time <span class="sc">/</span> places_damage</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -532,15 +540,34 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>The multiple regression equation that I settled on is:</p>
-<p><code>damage_mil</code>~<code>highest_wind_speed</code> + <code>rain_inch</code> + <code>total_areas</code> + <code>time</code></p>
-<p>damage_mil = Beta 0 + Beta 1 * wind speed + Beta 2 * rainfall + Beta 3 * number of places affected + Beta 4 * time</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the model</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>damage_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage_mil <span class="sc">~</span> highest_wind_speed <span class="sc">+</span> rain_inch <span class="sc">+</span> total_areas <span class="sc">+</span> time, <span class="at">data =</span> hurricane_data_cleaned)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(damage_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Damage costs over time</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(hurricane_data_cleaned, <span class="fu">aes</span>(<span class="at">x =</span> time, <span class="at">y =</span> damage_mil)) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Time (Years since 2000)"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Damage Costs (Millions of USD)"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Damage Costs vs. Time"</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="st">"cornflowerblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The multiple regression equation that I settled on is:</p>
+<p><span class="math display">\[damage = \beta_0 + \beta_1 wind + \beta_2 rain + \beta_3 areas + \beta_4 time\]</span></p>
+<div class="cell">
+<details class="code-fold">
+<summary>Expand Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the model</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>damage_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(damage_mil <span class="sc">~</span> highest_wind_speed <span class="sc">+</span> rain_inch <span class="sc">+</span> total_areas <span class="sc">+</span> time, <span class="at">data =</span> hurricane_data_cleaned)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(damage_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -567,22 +594,22 @@ Multiple R-squared:  0.2332,    Adjusted R-squared:  0.2042
 F-statistic: 8.057 on 4 and 106 DF,  p-value: 0.00001036</code></pre>
 </div>
 </div>
-<p>Using this model, I calculated the regression coefficients (Beta 1, Beta 2, Beta 3, and Beta 4) and their associated p-values.</p>
+<p>Using this model, I calculated the regression coefficients (<span class="math inline">\(\beta_1, \beta_2, \beta_3,\)</span> and <span class="math inline">\(\beta_4\)</span>) and their associated p-values.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># p-values</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>beta1_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>beta2_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">3</span>,<span class="dv">4</span>]</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>beta3_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">4</span>,<span class="dv">4</span>]</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>beta4_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">5</span>,<span class="dv">4</span>]</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">c</span>(beta1_p, beta2_p, beta3_p, beta4_p)</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print p-values</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(beta)) {</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"The p-value for Beta "</span>, i, <span class="st">" is "</span>, beta[i], <span class="st">"."</span>))</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save p-values</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>beta1_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">2</span>,<span class="dv">4</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>beta2_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">3</span>,<span class="dv">4</span>]</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>beta3_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">4</span>,<span class="dv">4</span>]</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>beta4_p <span class="ot">&lt;-</span> <span class="fu">summary</span>(damage_model)<span class="sc">$</span>coefficients[<span class="dv">5</span>,<span class="dv">4</span>]</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>beta <span class="ot">&lt;-</span> <span class="fu">c</span>(beta1_p, beta2_p, beta3_p, beta4_p)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Print p-values</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_along</span>(beta)) {</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="fu">paste0</span>(<span class="st">"The p-value for Beta "</span>, i, <span class="st">" is "</span>, beta[i], <span class="st">"."</span>))</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "The p-value for Beta 1 is 0.000105720738882069."
@@ -591,63 +618,30 @@ F-statistic: 8.057 on 4 and 106 DF,  p-value: 0.00001036</code></pre>
 [1] "The p-value for Beta 4 is 0.152163328387691."</code></pre>
 </div>
 </div>
-<p>To visualize damage predictions by the model, I looked at damage costs over time by wind speeds (broken down by category) and by rainfall (by quantiles). To visualize damage predictions by wind speed, I held rainfall and total areas constant at their mean values. To visualize damage predictions by rainfall quantile, I held wind speed and total areas constant at their mean values.</p>
+<p>To visualize damage predictions from the model, I looked at damage costs over time by wind speeds (broken down by category) and by rainfall (by quantiles). To visualize damage predictions by wind speed, I held rainfall and total areas constant at their mean values.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update model</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_wind_speed =</span> <span class="fu">c</span>(<span class="dv">74</span>, <span class="dv">96</span>, <span class="dv">111</span>, <span class="dv">130</span>, <span class="dv">157</span>),</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rain_inch =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_areas =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>total_areas),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">23</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">damage_predicted =</span> <span class="fu">predict</span>(damage_model, </span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> .,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">"response"</span>))</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="co">#Visualize</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions, <span class="fu">aes</span>(time, damage_predicted, <span class="at">color =</span> <span class="fu">factor</span>(highest_wind_speed))) <span class="sc">+</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Reds"</span>,</span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span><span class="st">"Wind Speed (mph)"</span>,</span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"74 (Cat 1)"</span>, <span class="st">"96 (Cat 2)"</span>, <span class="st">"111 (Cat 3)"</span>, <span class="st">"130 (Cat 4)"</span>, <span class="st">"157 (Cat 5)"</span>)) <span class="sc">+</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Years Since 2000"</span>,</span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Predicted Damage Costs over Time by Wind Speed"</span>) <span class="sc">+</span></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<details class="code-fold">
-<summary>Expand Code</summary>
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update model</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>predictions3 <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_wind_speed =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>highest_wind_speed),</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rain_inch =</span> <span class="fu">c</span>(<span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">2</span>],</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">3</span>],</span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">4</span>]),</span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_areas =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>total_areas),</span>
-<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">23</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">damage_predicted =</span> <span class="fu">predict</span>(damage_model, </span>
-<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> .,</span>
-<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">"response"</span>))</span>
-<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
-<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions3, <span class="fu">aes</span>(time, damage_predicted, <span class="at">color =</span> <span class="fu">factor</span>(rain_inch))) <span class="sc">+</span></span>
-<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Reds"</span>,</span>
-<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span><span class="st">"Rainfall (in)"</span>) <span class="sc">+</span></span>
-<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Years Since 2000"</span>,</span>
-<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Damage Costs (Millions of USD)"</span>,</span>
-<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Predicted Damage Costs over Time by Rainfall Quantiles"</span>) <span class="sc">+</span></span>
-<span id="cb16-21"><a href="#cb16-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update model with damage cost predictions</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>predictions <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_wind_speed =</span> <span class="fu">c</span>(<span class="dv">74</span>, <span class="dv">96</span>, <span class="dv">111</span>, <span class="dv">130</span>, <span class="dv">157</span>),</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rain_inch =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch),</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_areas =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>total_areas),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">23</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">damage_predicted =</span> <span class="fu">predict</span>(damage_model, </span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> .,</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions, <span class="fu">aes</span>(time, damage_predicted, <span class="at">color =</span> <span class="fu">factor</span>(highest_wind_speed))) <span class="sc">+</span></span>
+<span id="cb16-13"><a href="#cb16-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb16-14"><a href="#cb16-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Reds"</span>,</span>
+<span id="cb16-15"><a href="#cb16-15" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span><span class="st">"Wind Speed (mph)"</span>,</span>
+<span id="cb16-16"><a href="#cb16-16" aria-hidden="true" tabindex="-1"></a>                   <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"74 (Cat 1)"</span>, <span class="st">"96 (Cat 2)"</span>, <span class="st">"111 (Cat 3)"</span>, <span class="st">"130 (Cat 4)"</span>, <span class="st">"157 (Cat 5)"</span>)) <span class="sc">+</span></span>
+<span id="cb16-17"><a href="#cb16-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Years Since 2000"</span>,</span>
+<span id="cb16-18"><a href="#cb16-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Damage Costs (Millions of USD)"</span>,</span>
+<span id="cb16-19"><a href="#cb16-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Predicted Damage Costs over Time by Wind Speed"</span>) <span class="sc">+</span></span>
+<span id="cb16-20"><a href="#cb16-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div>
@@ -657,28 +651,62 @@ F-statistic: 8.057 on 4 and 106 DF,  p-value: 0.00001036</code></pre>
 </div>
 </div>
 </div>
+<p>To visualize damage predictions by rainfall quantile, I held wind speed and total areas constant at their mean values.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Expand Code</summary>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Update model with damage cost predictions</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>predictions3 <span class="ot">&lt;-</span> <span class="fu">expand_grid</span>(</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">highest_wind_speed =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>highest_wind_speed),</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">rain_inch =</span> <span class="fu">c</span>(<span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">2</span>],</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">3</span>],</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                   <span class="fu">quantile</span>(hurricane_data_cleaned<span class="sc">$</span>rain_inch)[<span class="dv">4</span>]),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">total_areas =</span> <span class="fu">mean</span>(hurricane_data_cleaned<span class="sc">$</span>total_areas),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">time =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">23</span>, <span class="at">length.out =</span> <span class="dv">100</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">damage_predicted =</span> <span class="fu">predict</span>(damage_model, </span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">newdata =</span> .,</span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>                                      <span class="at">type =</span> <span class="st">"response"</span>))</span>
+<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-13"><a href="#cb17-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize</span></span>
+<span id="cb17-14"><a href="#cb17-14" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(predictions3, <span class="fu">aes</span>(time, damage_predicted, <span class="at">color =</span> <span class="fu">factor</span>(rain_inch))) <span class="sc">+</span></span>
+<span id="cb17-15"><a href="#cb17-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb17-16"><a href="#cb17-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Reds"</span>,</span>
+<span id="cb17-17"><a href="#cb17-17" aria-hidden="true" tabindex="-1"></a>                     <span class="at">name =</span><span class="st">"Rainfall (in)"</span>) <span class="sc">+</span></span>
+<span id="cb17-18"><a href="#cb17-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Years Since 2000"</span>,</span>
+<span id="cb17-19"><a href="#cb17-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Predicted Damage Costs (Millions of USD)"</span>,</span>
+<span id="cb17-20"><a href="#cb17-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Predicted Damage Costs over Time by Rainfall Quantiles"</span>) <span class="sc">+</span></span>
+<span id="cb17-21"><a href="#cb17-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="conclusions" class="level1">
 <h1>Conclusions</h1>
-<p>I found that the p-values for Beta 1 (<code>hightest_wind_speed</code>) and Beta 2 (<code>rain_inch</code>) were less than <span class="math inline">\(alpha=0.05\)</span>. While we cannot confirm that <code>damage costs</code> are affected by <code>max wind speed</code> and <code>rainfall</code>, we can rule out that their influence is due to random chance.</p>
-<p>However, to answer my initial question, we must look at Beta 4. Both Beta 3 (<code>total_areas</code>) and Beta 4 (<code>time</code>) were greater than <span class="math inline">\(alpha=0.05\)</span>. So, we fail to reject the null hypothesis for <code>time</code>:</p>
+<p>I found that the p-values for <span class="math inline">\(\beta_1\)</span> (<code>hightest_wind_speed</code>) and <span class="math inline">\(\beta_2\)</span> (<code>rain_inch</code>) were less than the standard <span class="math inline">\(alpha=0.05\)</span>. While we cannot confirm that damage costs are affected by max wind speed and rainfall, we can rule out that their influence is due to random chance.</p>
+<p>However, to answer my initial question, we must look at <span class="math inline">\(\beta_4\)</span>. Both <span class="math inline">\(\beta_3\)</span> (<code>total_areas</code>) and <span class="math inline">\(\beta_4\)</span> (<code>time</code>) were greater than <span class="math inline">\(alpha=0.05\)</span>. We cannot rule out that the influence of <code>total_areas</code> and <code>time</code> are due to random chance. So, we fail to reject the null hypothesis:</p>
 <ul>
 <li>H0: Time has no effect on storm damage costs.</li>
 </ul>
-<p>To conclude, I could not rule out that the effect of <code>time</code> on <code>damage_mil</code> could be due to random chance.</p>
-<p>There are more than a few limitations to this analysis. First and foremost, the cleaned dataset only includes 111 observations from a 23-year time period. It would be ideal to have more observations from a longer time range to asses how damage costs have changed over time. In addition to a limited time range, it was not clear the source of the data and how particular variables were calculated. For example, what determined whether or not a place was named in the list of <code>areas_affected</code>? How was total rainfall calculated?</p>
-<p>I also think there is omitted variable bias for inflation. Damage costs could be primarily driven by the rising costs of building materials or bubbles in the real estate market.</p>
-<p>According to the literature, variables such as storm surge and water temperature would be interesting predictor to include as they are expected to increase with storm intensity.</p>
+<p>There are more than a few limitations to this analysis. First and foremost, the clean dataset only includes 111 observations from a 23-year time period. It would be ideal to have more observations from a longer time range to truly asses how damage costs have changed over time. In addition to a limited time range, it was not clear the source of the data and how particular variables were calculated. For example, what determined whether or not a place was named in the list of <code>areas_affected</code>? How was total rainfall in <code>rain_inch</code> calculated? What do the damage cost estimates consider?</p>
+<p>I also think there is omitted variable bias for inflation. It is very possible that damage costs could be primarily driven by the rising costs of building materials or the real estate market.</p>
+<p>According to the literature, variables such as storm surge and water temperature would be interesting predictors to include in the model, as they are expected to increase with storm intensity. Storm surge is also COSTLY.</p>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
-<p>Given more time, I would have been interested in compiling a better dataset. The dataset used in this analysis isn’t the best (no original source or thorough descriptions of variables i.e.&nbsp;rainfall?).</p>
-<p>https://www.ncei.noaa.gov/access/billions/</p>
+<p>Given more time, I would have liked to dive into how gamma regression could have better modeled damage costs. Gamma regressions are typically used to model positive, continuous data that is right-skewed, such as <code>damage_mil</code>. For example, in the last model visualizations, you can see how some of the predictions dip below $0, and we know that having negative damage costs is not possible.</p>
+<p>Just for fun, check out this <a href="https://www.ncei.noaa.gov/access/billions/">Billion-Dollar Weather and Climate Disasters Dashboard</a>.</p>
 </section>
 </section>
 <section id="references" class="level1">
 <h1>References</h1>
-<p>https://stock.adobe.com/search/images?k=hurricane</p>
+<p>Adobe Stock. (n.d.). Hurricane [Photograph]. Adobe Stock. https://stock.adobe.com/search/images?k=hurricane</p>
+<p>NASA. (2021, October 7). A force of nature: Hurricanes in a changing climate. NASA. https://science.nasa.gov/earth/climate-change/a-force-of-nature-hurricanes-in-a-changing-climate/</p>
 
 
 </section>
