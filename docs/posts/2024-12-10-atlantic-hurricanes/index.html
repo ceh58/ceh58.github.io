@@ -695,8 +695,7 @@ F-statistic: 8.057 on 4 and 106 DF,  p-value: 0.00001036</code></pre>
 <li>H0: Time has no effect on storm damage costs.</li>
 </ul>
 <p>There are more than a few limitations to this analysis. First and foremost, the clean dataset only includes 111 observations from a 23-year time period. It would be ideal to have more observations from a longer time range to truly asses how damage costs have changed over time. In addition to a limited time range, it was not clear the source of the data and how particular variables were calculated. For example, what determined whether or not a place was named in the list of <code>areas_affected</code>? How was total rainfall in <code>rain_inch</code> calculated? What do the damage cost estimates consider?</p>
-<p>I also think there is omitted variable bias for inflation. It is very possible that damage costs could be primarily driven by the rising costs of building materials or the real estate market.</p>
-<p>According to the literature, variables such as storm surge and water temperature would be interesting predictors to include in the model, as they are expected to increase with storm intensity. Storm surge is also COSTLY.</p>
+<p>I also think there is omitted variable bias for a few predictors. It is very possible that damage costs could be driven by inflation, likely through the rising costs of building materials or the real estate market. Additionally, Dr.&nbsp;Angela Colbert of NASA’s Jet Propulsion Laboratory relays that scientists predict storm surge and water temperature are expected to increase under the effects of climate change, making them ideal predictors to include in the model.</p>
 <section id="next-steps" class="level2">
 <h2 class="anchored" data-anchor-id="next-steps">Next steps</h2>
 <p>Given more time, I would have liked to dive into how gamma regression could have better modeled damage costs. Gamma regressions are typically used to model positive, continuous data that is right-skewed, such as <code>damage_mil</code>. For example, in the last model visualizations, you can see how some of the predictions dip below $0, and we know that having negative damage costs is not possible.</p>
@@ -706,7 +705,7 @@ F-statistic: 8.057 on 4 and 106 DF,  p-value: 0.00001036</code></pre>
 <section id="references" class="level1">
 <h1>References</h1>
 <p>Adobe Stock. (n.d.). Hurricane [Photograph]. Adobe Stock. https://stock.adobe.com/search/images?k=hurricane</p>
-<p>NASA. (2021, October 7). A force of nature: Hurricanes in a changing climate. NASA. https://science.nasa.gov/earth/climate-change/a-force-of-nature-hurricanes-in-a-changing-climate/</p>
+<p>Colbert, A. (2021, October 7). A force of nature: Hurricanes in a changing climate. NASA. https://science.nasa.gov/earth/climate-change/a-force-of-nature-hurricanes-in-a-changing-climate/</p>
 
 
 </section>
