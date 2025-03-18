@@ -1,6 +1,6 @@
 ---
 title: "Emissions in the USA"
-description: "A breakdown of the *drivers* behind hidden emissions."
+description: "A breakdown of the *drivers* behind decentralized sources of emissions."
 author:
   - name: Carmen Hoyt
     url: https://ceh58.github.io/
@@ -41,30 +41,30 @@ In the Environmental Protection Agency’s (EPA) [National Emissions Inventory (
 ## Design Choices
 
 
-I chose three fundamental graphic forms (a bar chart, a donut chart, and a map), created them in `{ggplot}`, and assembled them using Affinity. To answer “*who* is responsible for nonpoint emissions,” I used a donut chart to breakdown total nonpoint emissions (in tons) by sector. This lead me to find that the majority of emissions come from the **Mobile** sector, which I further broke down into two categories (**Onroad** and **Nonroad**). To investigate the relative contribution of each category, I used a bar chart to visually compare lengths (representative of tons of emissions). Originally, I had planned to use three separate bars as “smokestacks”, but I changed my mind because I felt that smokestacks better represented *point* sources better than nonpoint sources. I also used donut charts to answer the question “*what* pollutants comprise nonpoint emissions.” After finding that CO2 was the vast majority by weight (98%), I made a second donut chart to break down the remaining pollutants. Finally, I determined that the best way to answer “*where* are nonpoint emissions concentrated” was to show the spatial allocation of emissions (in tons) per square mile on a stylized map of the U.S. with states shaded by magnitude. I chose to normalize by area (square mile) to give a better sense of how states related to their emissions contributions given their size. 
+I chose three fundamental graphic forms (a bar chart, a donut chart, and a map), created them in `{ggplot}`, and assembled them using Affinity. To answer “*who* is responsible for nonpoint emissions,” I used a donut chart to breakdown total nonpoint emissions (in tons) by sector. This led to the finding that the majority of emissions come from the **Mobile** sector, which I further broke down into two categories (**Onroad** and **Nonroad**). To investigate the relative contribution of each category, I used a bar chart to visually compare lengths (representative of tons of emissions). Originally, I had planned to use these bars as “smokestacks”, but I changed my mind because I felt that smokestacks better represented *point* sources better than *nonpoint* sources. I used additional donut charts to answer the question “*what* pollutants comprise nonpoint emissions.” After finding that CO2 was the vast majority by weight (98%), I made a second donut chart to break down the remaining pollutants. Finally, I determined that the best way to answer “*where* are nonpoint emissions concentrated” was to show the spatial allocation of emissions (in tons) per square mile on a stylized map of the U.S. with states shaded by magnitude. Since larger states tended to emit more, I chose to normalize by area (square mile) to give a better sense of how states related to their emissions contributions, especially since they were represented by equal area squares in the map. 
 
 
-I used text annotations to give context and  point out the main takeaways for each of my three questions/sections. I labeled the bars on the bar chart to distinguish between the two **Mobile** sector categories and annotated with the total tons of emissions for each. I also included simple text legends for my donut charts, with the text colored to match the chart. I chose to add a subtitle to the map to make it clear what the units (tons/square mile) were. 
+I used text annotations to guide the reader through the infographic and point out the main takeaways for each of my three questions and their corresponding sections. I labeled the bars on the bar chart to distinguish between the two **Mobile** sector categories and annotated with the total tons of emissions for each. I also included simple text legends for my donut charts, with the text colored to match the chart. I chose to add a subtitle to the map to make it clear what the units (tons/square mile) were. 
 
 
 I used `theme_void()` for all my base themes to make customizing the overall style relatively simple. I didn’t include axes on any of my graphs because I relied on color and relative size to convey the necessary information without overloading on numbers. I felt that numbers were difficult to contextualize, especially in tons, and I wanted my overall infographic to be free from the clutter of grid lines and extra axes.
 
 
-I intentionally filtered color palettes for colorblind-friendly options. I pulled specific colors from [“palettetown::gloom”](https://emilhvitfeldt.github.io/r-color-palettes/discrete/palettetown/gloom/) (such as the orange for the map and the yellow for the lines on the road) to fit the overall theme of the larger infographic without being overwhelming on the color front. I think the dark color of the “road” bar chart balances the brighter colors, and I opted for a solid light gray background for contrast. I chose the dark red color for the map since it didn't immediately infer any connections to the pollutants on the donut chart, as the map represents *total* nonpoint emissions per square mile. The dark red signals some sense of “danger” without being too alarming. The collection as a whole helps to convey the “doom and gloom” emotion that I am invoking with my exploration of emissions. 
+I intentionally filtered color palettes for colorblind-friendly options. I pulled specific colors from [“palettetown::gloom”](https://emilhvitfeldt.github.io/r-color-palettes/discrete/palettetown/gloom/) (such as the red for the map and the yellow for the lines on the road) to fit the overall theme of the larger infographic without being overwhelming on the color front. I think the dark color of the “road” bar chart balances the brighter colors, and I opted for a solid light gray background for contrast. I chose the dark red color for the map since it didn't immediately infer any connections to individual pollutants on the donut chart, as the map represents *total* nonpoint emissions (across all pollutants) per square mile. The dark red elicits some sense of “danger” without being too alarming. The collection as a whole helps to convey the “doom and gloom” emotion that I am trying to invoke with my exploration of emissions. 
 
 
-I chose to use a **bolded** IBM Plex Sans Condensed for title text and a normal IBM Plex Sans for subtext (annotations, axis labels, etc.) because it has a modern, respectable presence without being overly official. I used bold typeface for the section titles to draw the readers attention to the *who* (By Sector), the *what* (By Pollutant), and the *where* (By State). I also bolded a few key words that summarized the takeaways/implications for each section. 
+I chose to use a **bolded** IBM Plex Sans Condensed for title text and a normal IBM Plex Sans for subtext (annotations, axis labels, etc.) because it has a modern, respectable presence without being overly official. I used bold typeface for the section titles to draw the readers attention to the *who* (**By Sector**), the *what* (**By Pollutant**), and the *where* (**By State**). I also bolded a few key words that summarized the takeaways/implications for each section. 
 
 
 I chose relatively simple graphic forms as well as a simple general layout to avoid information overload. I removed most of the legends and/or opted for simple text legends where possible. I used minimal objects and turned the **Onroad** bar into a road to make it visually enticing yet still informative. By removing axes and non-essential graphic elements, I did my best to generally minimize the data-ink ratio.  
 
 
-I stylized the sector donut chart as a wheel (thanks, [Sam](https://github.com/samanthacsik), for the suggestion!) and included one small car object to contextualize the focus on the **Mobile** sector as the majority sector responsible for nonpoint emissions. This, in combination with the “road” bar chart, further helps to place responsibility for the majority of **Nonpoint** emissions on the mobile sector, including cars, trucks, construction equipment, etc. I also contextualized the health implications of pollutants with a small skull and cross bones graphic.
+I stylized the sector donut chart as a wheel (thanks, [Sam](https://github.com/samanthacsik), for the suggestion!) and included one small car object to contextualize the focus on the **Mobile** sector as the majority sector responsible for nonpoint emissions. This, in combination with the “road” bar chart, further helps to place responsibility for the majority of **Nonpoint** emissions on the mobile sector, including cars and trucks. I also contextualized the health implications of various pollutants with a small skull and cross bones graphic.
 
 
 Nonpoint emissions are such that they do not have a specific fixed location. Thus, my primary message revolves around uncovering the *who*, the *what*, and the *where* concerning nonpoint emissions. I wanted to convey that nonpoint emissions are not insignificant and are more relevant in our daily lives than we may realize. 
 
-Emissions come from many, many sources. In some sense, the *who* of nonpoint emissions really includes everyone, as most people can relate to driving a car, taking public transportation, or even contributing to the larger network of shipping through online purchases or getting groceries. My intention was to send the message that nonpoint emissions are more tangible than the name leads us to believe. By giving some context to these emissions, I hope people will think about their individual contributions and scale back where they can. 
+Emissions come from many, many sources. In some sense, the *who* of nonpoint emissions really includes everyone, as most people can relate to driving a car, taking public transportation, or even contributing to the larger network of shipping through online purchases or getting groceries. My intention was to send the message that nonpoint emissions are more tangible than the name leads us to believe. By giving some context to these emissions, I hope people will think about their individual contributions and make changes to their driving habits where they can. 
 
 
 You can access my code for each graph by clicking on the respective arrows below.
@@ -73,7 +73,7 @@ You can access my code for each graph by clicking on the respective arrows below
 [^1]: [EPA Global Greenhouse Gas Overview](https://www.epa.gov/ghgemissions/global-greenhouse-gas-overview)
 
 
-[^2]: To give this better context, the brown box behind "nonpoint" represents 2% of the total page space, proportional to the contribution of nonpoint emissions to total emissions.
+[^2]: To give this better context, the brown box behind "nonpoint" in the infograhpic title represents 2% of the total page space, proportional to the contribution of nonpoint emissions to total emissions.
 
 
 [^3]: [NEI support documentation](https://www.epa.gov/air-emissions-inventories/2020-national-emissions-inventory-nei-technical-support-document-tsd)
@@ -98,11 +98,7 @@ library(janitor)
 emissions_cleaned_non_point <- read_csv(here("posts/", "2025-03-11-nonpoint-emissions/", "data", "emissions_cleaned.csv"), show_col_types = FALSE) %>%
   clean_names()
 
-# -------- Define styles ---------
-
-# Get "Gloom" colors
-my_colors <- paletteer::paletteer_d("palettetown::gloom")
-
+# -------- Load fonts ---------
 showtext_auto()
 
 # Import Google fonts
@@ -116,7 +112,7 @@ subtext <- "ibm_plex"
 ```{r}
 #| code-summary: Bar Graph
 #| fig-asp: 1.3
-#| fig-alt: "A bar chart showing the breakdown of emissions (in tons) by nonroad and onraod divisions of the mobile sector, further broken down into diesel and other fuel types."
+#| fig-alt: "A bar chart showing the breakdown of emissions (in tons) by nonroad and onroad categories of the mobile sector, with onroad emissions contributing over 16 times the nonroad contributions."
 
 # -------- Emissions data for mobile sector --------
 road_data <- emissions_cleaned_non_point %>%
@@ -124,7 +120,7 @@ road_data <- emissions_cleaned_non_point %>%
   # Filter for the "Mobile" sector
   filter(str_detect(eis_sector, "Mobile")) %>%
   
-  # Label by "Mobile" sectory subcategories
+  # Label by "Mobile" sector subcategories
   mutate(cleaned_subsector = case_when(
     str_detect(eis_sector, "Commercial Marine Vessels") ~ "Other",
     str_detect(eis_sector, "Locomotives") ~ "Other",
@@ -185,7 +181,7 @@ road
 ```{r}
 #| code-summary: Map
 #| fig-asp: 0.8
-#| fig-alt: "A map showing emissions (in tons) per square mile for each state in the US, with New Jersey producing the most."
+#| fig-alt: "A map showing emissions (in tons) per square mile for each state in the US, with New Jersey producing the most followed by Rhode Island and Masssachusetts."
 
 # -------- Convert built-in state.area to a df --------
 state_data <- data.frame(
@@ -201,10 +197,11 @@ state <- emissions_cleaned_non_point %>%
   summarise(total_emissions = sum(emissions_tons)) %>%
   mutate(rel_emissions = total_emissions/area) %>%
   arrange(desc(rel_emissions)) %>%
-  mutate(opacity = rel_emissions/5068.261374)
+  ungroup() %>%
+  mutate(opacity = rel_emissions/max(rel_emissions))
 
 # Define specific colors
-core = "#983100"
+core = "#983100" # from gloom palette
 accent = "gray20"
 
 # -------- Create map --------
@@ -217,14 +214,12 @@ map <- ggplot(state) +
   # Label with state abbreviation
   geom_text(aes(x = 0.5, y = 0.7, label = abbrv), 
             size = 7, 
-            family = subtext,
-            color = "black") +
+            family = subtext) +
   
   # Label with tons/square mile
   geom_text(aes(x = 0.5, y = 0.3, label = round(rel_emissions, 0)), 
             size = 5, 
-            family = subtext,
-            color = "black")  +
+            family = subtext)  +
 
   # Break rectangle up by state
   geofacet::facet_geo(~state) +
@@ -326,7 +321,7 @@ sector_donut
 ```
 
 ```{r}
-#| code-summary: Pollutant Donut
+#| code-summary: Majority Pollutant Donut
 #| fig-asp: 0.8
 #| fig-alt: "A donut chart showing the breakdown of pollutants (in tons), with carbon dioxide comprising the majority 98%."
 
@@ -366,7 +361,7 @@ pollutants <- ggplot(all_pollutants, aes(x = 2, y = prop, fill = category)) +
         ) + 
   
   # Remove first two colors already used in sector donut
-  scale_fill_manual(values = paletteer::paletteer_d("palettetown::gloom")[-c(1,2)] 
+  scale_fill_manual(values = paletteer::paletteer_d("palettetown::gloom")[-c(1:2)] 
 )
 
 # View
@@ -415,7 +410,7 @@ pollutants_2 <- ggplot(other_pollutants, aes(x = 2, y = emissions_tons, fill = c
         ) + 
   
   # Remove first 4 colors that have been used
-  scale_fill_manual(values = paletteer::paletteer_d("palettetown::gloom")[-c(1,2,3,4)])
+  scale_fill_manual(values = paletteer::paletteer_d("palettetown::gloom")[-c(1:4)])
 
 # View
 pollutants_2
