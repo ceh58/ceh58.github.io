@@ -10,22 +10,20 @@ $nunito: "Nunito", sans-serif;
 
 // Old Colors
 $richblack: #031926;
-$teal: #468189;
-$cambridgeblue: #77ACA2;
-$ashgray: #9DBEBB;
-$parchment: #F4E9CD;
 $darkgray: #333333;
-
-// New Colors
 $paynesgray: #666A86;
 $slategray: #788AA3;
-$cambridgeblue: #92B6B1;
+$teal: #468189;
+$cambridgeblue: #77ACA2;
+$cambridgeblue2: #92B6B1;
+$ashgray: #9DBEBB;
 $celadon: #B2C9AB;
-$dutchwhite: #E8DDB5;
+$parchment: #F4E9CD;
+$eggshell: #F5F1E0;
 
 // Quarto Sass variables
-$body-bg: $parchment;
-$navbar-bg: $cambridgeblue;
+$body-bg: $eggshell;
+$navbar-bg: $ashgray;
 $navbar-fg: $darkgray;
 $navbar-hl: $teal;
 
@@ -36,8 +34,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, h2 {
-  letter-spacing: 5px;
-  font-weight: 800;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 .title {
