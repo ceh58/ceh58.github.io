@@ -2,33 +2,40 @@
 
 // Import Google Fonts 
 @import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 // Create font variables
 $pt-sans: "PT Sans", sans-serif;
+$nunito: "Nunito", sans-serif;
 
-// Colors
+// Old Colors
 $richblack: #031926;
+$darkgray: #333333;
+$paynesgray: #666A86;
+$slategray: #788AA3;
 $teal: #468189;
 $cambridgeblue: #77ACA2;
+$cambridgeblue2: #92B6B1;
 $ashgray: #9DBEBB;
+$celadon: #B2C9AB;
 $parchment: #F4E9CD;
-$darkgray: #333333;
+$eggshell: #F5F1E0;
 
 // Quarto Sass variables
-$body-bg: $parchment;
-$navbar-bg: $cambridgeblue;
+$body-bg: $eggshell;
+$navbar-bg: $ashgray;
 $navbar-fg: $darkgray;
 $navbar-hl: $teal;
 
 /*-- scss:rules --*/
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: $pt-sans;
+  font-family: $nunito;
 }
 
 h1, h2 {
-  letter-spacing: 5px;
-  font-weight: 800;
+  letter-spacing: 2px;
+  font-weight: 700;
 }
 
 .title {

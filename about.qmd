@@ -10,11 +10,11 @@ title: "About"
 
 ## Professional Experience
 
-**Biologist** - AECOS, Kane'ohe, Hawai'i (1/23–7/24)
+**Biologist** - AECOS, Kane'ohe, Hawaii (1/23–7/24)
 
 At AECOS, I analyzed and visualized environmental data using R, Python, ArcMap and ArcGIS Pro. I conducted natural resource surveys and collected geospatial data using a Trimble Geo 7x and an Autel Evo II drone. I produced technical reports using Microsoft Office and Adobe Acrobat, and I worked with clients to produce deliverables in a timely manner.
 
-**Senior Research Assistant** – Oceanic Institute at Hawai'i Pacific University Waimanalo, Hawai'i (6/21–1/23)
+**Senior Research Assistant** – Oceanic Institute at Hawaii Pacific University Waimanalo, Hawaii (6/21–1/23)
 
 While working as a Senior Research Assistant, I managed the algae lab and oversaw the installation and operation of two photobioreactors purchased under a federal grant awarded by the U.S. Department of Education. I collected long-term data, developed lab protocols, and was promoted to Senior Research Assistant for showing leadership and proficiency in all departments. Additionally, I created a marketing role for social media updates and outreach on Instagram and Facebook.
 
