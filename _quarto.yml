@@ -26,7 +26,7 @@ website:
 format: 
   html:
     theme: styles.scss
-    mainfont: Nunito
+    mainfont: Quicksand
       #light: sandstone
       #dark: slate
     css: styles.css
